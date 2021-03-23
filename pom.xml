@@ -92,6 +92,11 @@
                     <artifactId>javafx-fxml</artifactId>
                     <version>11</version>
                 </dependency>
+                <dependency>
+                    <groupId>e-iceblue</groupId>
+                    <artifactId>spire.doc.free</artifactId>
+                    <version>3.9.0</version>
+                </dependency>
             </dependencies>
         </profile>
     </profiles>
@@ -106,5 +111,17 @@
             <artifactId>poi-ooxml</artifactId>
             <version>5.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>e-iceblue</groupId>
+            <artifactId>spire.doc.free</artifactId>
+            <version>3.9.0</version>
+        </dependency>
     </dependencies>
+    <repositories>
+        <repository>
+            <id>com.e-iceblue</id>
+            <name>e-iceblue</name>
+            <url>http://repo.e-iceblue.com/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
 </project>

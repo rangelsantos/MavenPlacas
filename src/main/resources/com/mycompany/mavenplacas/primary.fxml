@@ -8,13 +8,13 @@
 
 <AnchorPane id="AnchorPane" prefHeight="315.0" prefWidth="413.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.mavenplacas.PrimaryController">
     <children>
-      <Button fx:id="btnSave" layoutX="65.0" layoutY="240.0" onAction="#getResult" text="Salvar" />
+      <Button fx:id="btnSave" layoutX="65.0" layoutY="240.0" onAction="#getSave" text="Salvar" />
       <ComboBox fx:id="cbGroup" layoutX="14.0" layoutY="32.0" prefHeight="25.0" prefWidth="100.0" promptText="Grupo" />
       <ComboBox fx:id="cbBrand" layoutX="189.0" layoutY="32.0" prefHeight="25.0" prefWidth="100.0" promptText="Marca" />
       <ComboBox fx:id="cbSmallSize" layoutX="14.0" layoutY="108.0" prefWidth="150.0" promptText="Menor" />
       <ComboBox fx:id="cbLargeSize" layoutX="189.0" layoutY="108.0" prefWidth="150.0" promptText="Maior" />
       <TextField fx:id="txtModel" layoutX="297.0" layoutY="32.0" prefHeight="25.0" prefWidth="100.0" promptText="Modelo" />
       <ComboBox fx:id="cbStyle" layoutX="119.0" layoutY="32.0" prefHeight="25.0" prefWidth="64.0" promptText="-" />
-      <Button fx:id="btnPrint" layoutX="138.0" layoutY="240.0" mnemonicParsing="false" text="Imprimir" />
+      <Button fx:id="btnPrint" layoutX="138.0" layoutY="240.0" mnemonicParsing="false" onAction="#getPrint" text="Imprimir" />
     </children>
 </AnchorPane>

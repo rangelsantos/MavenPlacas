@@ -15,69 +15,66 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 public class PrimaryController implements Initializable {
-    
+
+    boolean print;
+
     @FXML
     private Button btnSave;
-    
+
     @FXML
     private Button btnPrint;
-    
+
     @FXML
     private TextField txtModel;
-    
+
     @FXML
     private ComboBox<Categorias> cbGroup;
     private List<Categorias> catGroup = new ArrayList<>();
     private ObservableList<Categorias> obsCatGroup;
-    
+
     @FXML
     private ComboBox<Categorias> cbBrand;
     private List<Categorias> catBrand = new ArrayList<>();
     private ObservableList<Categorias> obsCatBrand;
-    
+
     @FXML
     private ComboBox<Categorias> cbSmallSize;
     private List<Categorias> catSmallSize = new ArrayList<>();
     private ObservableList<Categorias> obsCatSmallSize;
-    
+
     @FXML
     private ComboBox<Categorias> cbLargeSize;
     private List<Categorias> catLargeSize = new ArrayList<>();
     private ObservableList<Categorias> obsCatLargeSize;
-    
+
     @FXML
     private ComboBox<Categorias> cbStyle;
     private List<Categorias> catStyle = new ArrayList<>();
     private ObservableList<Categorias> obsCatStyle;
-    
+
     @FXML
-    private void getResult(ActionEvent ae) throws IOException {
-//        Categorias seleGroup = cbGroup.getSelectionModel().getSelectedItem();
-//        Categorias seleBrand = cbBrand.getSelectionModel().getSelectedItem();
-//        Categorias seleSmall = cbSmallSize.getSelectionModel().getSelectedItem();
-//        Categorias seleLarge = cbLargeSize.getSelectionModel().getSelectedItem();
-//        Categorias seleStyle = cbStyle.getSelectionModel().getSelectedItem();
-//        int menor = Integer.parseInt(seleSmall.getNome());
-//        int maior = Integer.parseInt(seleLarge.getNome());
-//        while (menor <= maior){
-//            System.out.println(seleGroup.getNome()+ seleStyle.getNome() + seleBrand.getNome() + seleStyle.getNome() + txtModel.getText());
-//            System.out.println(menor);
-//            menor+=2;
-//        }
+    private void getSave (ActionEvent ae) throws IOException {
+        print = false;
         printer();
     }
     
-    public void printer() throws IOException{
+    @FXML
+    private void getPrint (ActionEvent ae) throws IOException {
+        print = true;
+        printer();
+    }
+
+    public void printer() throws IOException {
         Categorias seleGroup = cbGroup.getSelectionModel().getSelectedItem();
         Categorias seleBrand = cbBrand.getSelectionModel().getSelectedItem();
         Categorias seleSmall = cbSmallSize.getSelectionModel().getSelectedItem();
         Categorias seleLarge = cbLargeSize.getSelectionModel().getSelectedItem();
         Categorias seleStyle = cbStyle.getSelectionModel().getSelectedItem();
-        Exporter document = new Exporter(seleGroup.getNome(),seleStyle.getNome(),seleBrand.getNome(),txtModel.getText(),seleSmall.getNome(),seleLarge.getNome());
+        Exporter document = new Exporter(seleGroup.getNome(), seleStyle.getNome(), seleBrand.getNome(), txtModel.getText(), seleSmall.getNome(), seleLarge.getNome(), print);
         document.fileFormater();
     }
-    
-    public void getterGroup(){
+
+    public void getterGroup() {
         Categorias grupo1 = new Categorias("5001");
         Categorias grupo2 = new Categorias("5002");
         Categorias grupo3 = new Categorias("5003");
@@ -101,8 +98,8 @@ public class PrimaryController implements Initializable {
         obsCatGroup = FXCollections.observableArrayList(catGroup);
         cbGroup.setItems(obsCatGroup);
     }
-    
-    public void getterBrand(){
+
+    public void getterBrand() {
         Categorias brand1 = new Categorias("22");
         Categorias brand2 = new Categorias("89");
         Categorias brand3 = new Categorias("91");
@@ -120,8 +117,8 @@ public class PrimaryController implements Initializable {
         obsCatBrand = FXCollections.observableArrayList(catBrand);
         cbBrand.setItems(obsCatBrand);
     }
-    
-    public void getterSmallSize(){
+
+    public void getterSmallSize() {
         Categorias smallSize1 = new Categorias("32");
         Categorias smallSize2 = new Categorias("34");
         Categorias smallSize3 = new Categorias("36");
@@ -147,8 +144,8 @@ public class PrimaryController implements Initializable {
         obsCatSmallSize = FXCollections.observableArrayList(catSmallSize);
         cbSmallSize.setItems(obsCatSmallSize);
     }
-    
-    public void getterLargeSize(){
+
+    public void getterLargeSize() {
         Categorias largeSize1 = new Categorias("32");
         Categorias largeSize2 = new Categorias("34");
         Categorias largeSize3 = new Categorias("36");
@@ -180,8 +177,8 @@ public class PrimaryController implements Initializable {
         obsCatLargeSize = FXCollections.observableArrayList(catLargeSize);
         cbLargeSize.setItems(obsCatLargeSize);
     }
-    
-    public void getterStyle(){
+
+    public void getterStyle() {
         Categorias style1 = new Categorias("-");
         Categorias style2 = new Categorias("+");
         Categorias style3 = new Categorias(" ");
@@ -199,7 +196,7 @@ public class PrimaryController implements Initializable {
         obsCatStyle = FXCollections.observableArrayList(catStyle);
         cbStyle.setItems(obsCatStyle);
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         getterGroup();

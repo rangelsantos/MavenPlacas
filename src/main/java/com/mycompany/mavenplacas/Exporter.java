@@ -5,6 +5,11 @@
  */
 package com.mycompany.mavenplacas;
 
+import com.spire.doc.Document;
+import java.awt.print.PageFormat;
+import java.awt.print.Paper;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
 import java.io.File;
 import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
@@ -21,27 +26,21 @@ import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTPageMar;
 public class Exporter {
 
     public String group, style, brand, model, small, large;
+    public boolean print;
 
-    public Exporter(String group, String style, String brand, String model, String small, String large) throws IOException {
+    public Exporter(String group, String style, String brand, String model, String small, String large, boolean print) throws IOException {
         this.group = group;
         this.style = style;
         this.brand = brand;
         this.model = model;
         this.small = small;
         this.large = large;
+        this.print = print;
     }
 
     public void fileFormater() throws IOException {
         int sml = Integer.parseInt(small);
         int lrg = Integer.parseInt(large);
-
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setInitialFileName("novo");
-        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("DOCX (*.docx)", "*.docx");
-        fileChooser.getExtensionFilters().add(extFilter);
-        File selectedFile = fileChooser.showSaveDialog(null);
-        String fileName = selectedFile.getCanonicalPath();
 
         try (XWPFDocument doc = new XWPFDocument()) {
 
@@ -76,10 +75,85 @@ public class Exporter {
                 r1.addBreak();
                 sml += 2;
             }
-
-            try (FileOutputStream out = new FileOutputStream(fileName)) {
-                doc.write(out);
+            if (!print) {
+                Saver save = new Saver(doc);
+                save.writeFile();
+            } else if (print) {
+                Printer printing = new Printer(doc);
+                printing.nicePrint();
             }
+
+//            if (!print) {
+//                FileChooser fileChooser = new FileChooser();
+//                fileChooser.setInitialFileName("novo");
+//                fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+//                FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("DOCX (*.docx)", "*.docx");
+//                fileChooser.getExtensionFilters().add(extFilter);
+//                File selectedFile = fileChooser.showSaveDialog(null);
+//                String fileName = selectedFile.getCanonicalPath();
+//                try (FileOutputStream out = new FileOutputStream(fileName)) {
+//                    doc.write(out);
+//                }
+//            } else if (print){
+//                File tempFile = File.createTempFile("printable", ".docx");
+//                String fileName = tempFile.getCanonicalPath();
+//                try (FileOutputStream out = new FileOutputStream(fileName)) {
+//                    doc.write(out);
+//                }
+//                Document document = new Document();
+//                System.out.println(fileName);
+//                document.loadFromFile(fileName);
+//                PrinterJob printerJob = PrinterJob.getPrinterJob();
+//                PageFormat pageFormat = printerJob.defaultPage();
+//                Paper paper = pageFormat.getPaper();
+//                paper.setImageableArea(0, 0, pageFormat.getWidth(), pageFormat.getHeight());
+//                printerJob.setCopies(1);
+//                pageFormat.setPaper(paper);
+//                printerJob.setPrintable(document, pageFormat);
+//                try {
+//                    printerJob.printDialog();
+//                    printerJob.print();
+//                } catch (PrinterException e) {
+//                }
+//            }
         }
+
     }
-}
+
+//    public void save(XWPFDocument doc) throws IOException {
+//        FileChooser fileChooser = new FileChooser();
+//        fileChooser.setInitialFileName("novo");
+//        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+//        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("DOCX (*.docx)", "*.docx");
+//        fileChooser.getExtensionFilters().add(extFilter);
+//        File selectedFile = fileChooser.showSaveDialog(null);
+//        String fileName = selectedFile.getCanonicalPath();
+//        try (FileOutputStream out = new FileOutputStream(fileName)) {
+//            doc.write(out);
+//        }
+//    }
+
+//    public void print(XWPFDocument doc) throws IOException {
+//        File tempFile = File.createTempFile("printable", ".docx");
+//        String fileName = tempFile.getCanonicalPath();
+//        Printer printing = new Printer(fileName);
+//        printing.nicePrint();
+//        try (FileOutputStream out = new FileOutputStream(fileName)) {
+//            doc.write(out);
+//            Document document = new Document();
+//            System.out.println(fileName);
+//            document.loadFromFile(fileName);
+//            PrinterJob printerJob = PrinterJob.getPrinterJob();
+//            PageFormat pageFormat = printerJob.defaultPage();
+//            Paper paper = pageFormat.getPaper();
+//            paper.setImageableArea(0, 0, pageFormat.getWidth(), pageFormat.getHeight());
+//            printerJob.setCopies(1);
+//            pageFormat.setPaper(paper);
+//            printerJob.setPrintable(document, pageFormat);
+//            try {
+//                printerJob.printDialog();
+//                printerJob.print();
+//            } catch (PrinterException e) {
+//            }
+//        }
+    }
