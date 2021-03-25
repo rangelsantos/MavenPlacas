@@ -53,13 +53,13 @@ public class PrimaryController implements Initializable {
     private ObservableList<Categorias> obsCatStyle;
 
     @FXML
-    private void getSave (ActionEvent ae) throws IOException {
+    private void getSave(ActionEvent ae) throws IOException {
         print = false;
         printer();
     }
-    
+
     @FXML
-    private void getPrint (ActionEvent ae) throws IOException {
+    private void getPrint(ActionEvent ae) throws IOException {
         print = true;
         printer();
     }
@@ -85,6 +85,39 @@ public class PrimaryController implements Initializable {
         Categorias grupo8 = new Categorias("5009");
         Categorias grupo9 = new Categorias("5010");
         Categorias grupo10 = new Categorias("5011");
+        Categorias grupo11 = new Categorias("5015");
+        Categorias grupo12 = new Categorias("5016");
+        Categorias grupo13 = new Categorias("5017");
+        Categorias grupo14 = new Categorias("5018");
+        Categorias grupo15 = new Categorias("5019");
+        Categorias grupo16 = new Categorias("5049");
+        Categorias grupo17 = new Categorias("5050");
+        Categorias grupo18 = new Categorias("5059");
+        Categorias grupo19 = new Categorias("6001");
+        Categorias grupo20 = new Categorias("6002");
+        Categorias grupo21 = new Categorias("6003");
+        Categorias grupo22 = new Categorias("6004");
+        Categorias grupo23 = new Categorias("6005");
+        Categorias grupo24 = new Categorias("6006");
+        Categorias grupo25 = new Categorias("6007");
+        Categorias grupo26 = new Categorias("6008");
+        Categorias grupo27 = new Categorias("6009");
+        Categorias grupo28 = new Categorias("6010");
+        Categorias grupo29 = new Categorias("6011");
+        Categorias grupo30 = new Categorias("6012");
+        Categorias grupo31 = new Categorias("6013");
+        Categorias grupo32 = new Categorias("6014");
+        Categorias grupo33 = new Categorias("6015");
+        Categorias grupo34 = new Categorias("6016");
+        Categorias grupo35 = new Categorias("6017");
+        Categorias grupo36 = new Categorias("6018");
+        Categorias grupo37 = new Categorias("6019");
+        Categorias grupo38 = new Categorias("6022");
+        Categorias grupo39 = new Categorias("6024");
+        Categorias grupo40 = new Categorias("6036");
+        Categorias grupo41 = new Categorias("6042");
+        Categorias grupo42 = new Categorias("6045");
+        Categorias grupo43 = new Categorias("7007");
         catGroup.add(grupo1);
         catGroup.add(grupo2);
         catGroup.add(grupo3);
@@ -95,6 +128,39 @@ public class PrimaryController implements Initializable {
         catGroup.add(grupo8);
         catGroup.add(grupo9);
         catGroup.add(grupo10);
+        catGroup.add(grupo11);
+        catGroup.add(grupo12);
+        catGroup.add(grupo13);
+        catGroup.add(grupo14);
+        catGroup.add(grupo15);
+        catGroup.add(grupo16);
+        catGroup.add(grupo17);
+        catGroup.add(grupo18);
+        catGroup.add(grupo19);
+        catGroup.add(grupo20);
+        catGroup.add(grupo21);
+        catGroup.add(grupo22);
+        catGroup.add(grupo23);
+        catGroup.add(grupo24);
+        catGroup.add(grupo25);
+        catGroup.add(grupo26);
+        catGroup.add(grupo27);
+        catGroup.add(grupo28);
+        catGroup.add(grupo29);
+        catGroup.add(grupo30);
+        catGroup.add(grupo31);
+        catGroup.add(grupo32);
+        catGroup.add(grupo33);
+        catGroup.add(grupo34);
+        catGroup.add(grupo35);
+        catGroup.add(grupo36);
+        catGroup.add(grupo37);
+        catGroup.add(grupo38);
+        catGroup.add(grupo39);
+        catGroup.add(grupo40);
+        catGroup.add(grupo41);
+        catGroup.add(grupo42);
+        catGroup.add(grupo43);
         obsCatGroup = FXCollections.observableArrayList(catGroup);
         cbGroup.setItems(obsCatGroup);
     }

@@ -5,21 +5,13 @@
  */
 package com.mycompany.mavenplacas;
 
-import com.spire.doc.Document;
-import java.awt.print.PageFormat;
-import java.awt.print.Paper;
-import java.awt.print.PrinterException;
-import java.awt.print.PrinterJob;
-import java.io.File;
 import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.math.BigInteger;
-import javafx.stage.FileChooser;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTSectPr;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTPageMar;
 
@@ -62,7 +54,7 @@ public class Exporter {
 
             XWPFParagraph p1 = doc.createParagraph();
             p1.setAlignment(ParagraphAlignment.CENTER);
-            p1.setSpacingBefore(100);
+            p1.setSpacingBetween(0.9);
 
             XWPFRun r1 = p1.createRun();
             r1.setBold(true);
@@ -82,78 +74,6 @@ public class Exporter {
                 Printer printing = new Printer(doc);
                 printing.nicePrint();
             }
-
-//            if (!print) {
-//                FileChooser fileChooser = new FileChooser();
-//                fileChooser.setInitialFileName("novo");
-//                fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
-//                FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("DOCX (*.docx)", "*.docx");
-//                fileChooser.getExtensionFilters().add(extFilter);
-//                File selectedFile = fileChooser.showSaveDialog(null);
-//                String fileName = selectedFile.getCanonicalPath();
-//                try (FileOutputStream out = new FileOutputStream(fileName)) {
-//                    doc.write(out);
-//                }
-//            } else if (print){
-//                File tempFile = File.createTempFile("printable", ".docx");
-//                String fileName = tempFile.getCanonicalPath();
-//                try (FileOutputStream out = new FileOutputStream(fileName)) {
-//                    doc.write(out);
-//                }
-//                Document document = new Document();
-//                System.out.println(fileName);
-//                document.loadFromFile(fileName);
-//                PrinterJob printerJob = PrinterJob.getPrinterJob();
-//                PageFormat pageFormat = printerJob.defaultPage();
-//                Paper paper = pageFormat.getPaper();
-//                paper.setImageableArea(0, 0, pageFormat.getWidth(), pageFormat.getHeight());
-//                printerJob.setCopies(1);
-//                pageFormat.setPaper(paper);
-//                printerJob.setPrintable(document, pageFormat);
-//                try {
-//                    printerJob.printDialog();
-//                    printerJob.print();
-//                } catch (PrinterException e) {
-//                }
-//            }
         }
-
     }
-
-//    public void save(XWPFDocument doc) throws IOException {
-//        FileChooser fileChooser = new FileChooser();
-//        fileChooser.setInitialFileName("novo");
-//        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
-//        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("DOCX (*.docx)", "*.docx");
-//        fileChooser.getExtensionFilters().add(extFilter);
-//        File selectedFile = fileChooser.showSaveDialog(null);
-//        String fileName = selectedFile.getCanonicalPath();
-//        try (FileOutputStream out = new FileOutputStream(fileName)) {
-//            doc.write(out);
-//        }
-//    }
-
-//    public void print(XWPFDocument doc) throws IOException {
-//        File tempFile = File.createTempFile("printable", ".docx");
-//        String fileName = tempFile.getCanonicalPath();
-//        Printer printing = new Printer(fileName);
-//        printing.nicePrint();
-//        try (FileOutputStream out = new FileOutputStream(fileName)) {
-//            doc.write(out);
-//            Document document = new Document();
-//            System.out.println(fileName);
-//            document.loadFromFile(fileName);
-//            PrinterJob printerJob = PrinterJob.getPrinterJob();
-//            PageFormat pageFormat = printerJob.defaultPage();
-//            Paper paper = pageFormat.getPaper();
-//            paper.setImageableArea(0, 0, pageFormat.getWidth(), pageFormat.getHeight());
-//            printerJob.setCopies(1);
-//            pageFormat.setPaper(paper);
-//            printerJob.setPrintable(document, pageFormat);
-//            try {
-//                printerJob.printDialog();
-//                printerJob.print();
-//            } catch (PrinterException e) {
-//            }
-//        }
-    }
+}

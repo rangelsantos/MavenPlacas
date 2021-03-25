@@ -1,0 +1,42 @@
+.backgroundMain {
+    -fx-background-color: #1f1f1f;
+}
+
+.masterButtons {
+    -fx-background-color:#121212;
+}
+
+.masterButtons:hover {
+    -fx-background-color:#404040;
+}
+
+.masterTextField {
+    -fx-background-color:#121212;
+    -fx-text-fill: white;
+}
+
+.masterTextField:hover {
+    -fx-background-color:#404040;
+}
+
+.masterComboBox {
+    -fx-background-color:#121212;
+    -fx-text: white;
+}
+
+.masterComboBox:hover {
+    -fx-background-color:#404040;
+    -fx-background: black;
+}
+
+.masterComboBox .list-view .list-cell {
+    -fx-background-color:#121212;
+}
+
+.masterComboBox .list-view .list-cell:hover {
+    -fx-background-color:#404040;
+}
+
+.masterComboBox .list-cell {
+    -fx-text-fill: white;
+}

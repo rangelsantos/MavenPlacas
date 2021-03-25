@@ -17,10 +17,10 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 413, 315);
+        scene = new Scene(loadFXML("primary"));
         stage.setResizable(false);
         stage.setScene(scene);
-        stage.setTitle("Projeto Placas");
+        stage.setTitle("Projeto Placas (0.7-a.2 FAT) - Rangel");
         stage.show();
     }
 
