@@ -20,7 +20,7 @@ public class App extends Application {
         scene = new Scene(loadFXML("primary"));
         stage.setResizable(false);
         stage.setScene(scene);
-        stage.setTitle("Projeto Placas (0.7-a.2 FAT) - Rangel");
+        stage.setTitle("Projeto Placas (TESTE v0.7-a.4 FAT) - Rangel");
         stage.show();
     }
 
