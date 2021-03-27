@@ -19,6 +19,7 @@ public class Exporter {
 
     public String group, style, brand, model, small, large, numModel[];
     public boolean print;
+    private int smallinfo, largeinfo;
 
     public Exporter(String group, String style, String brand, String model, String small, String large, boolean print) throws IOException {
         this.group = group;
@@ -73,22 +74,57 @@ public class Exporter {
                     break;
                 }
                 default: {
-                    numModel = PrimaryController.catNumAdul;
+                    switch (group){
+                        case "5001":{
+                            numModel = PrimaryController.catNumAdul;
+                            break;
+                        }
+                        case "5002":{
+                            numModel = PrimaryController.catNumAdul;
+                            break;
+                        }
+                        case "6001":{
+                            numModel = PrimaryController.catNumAdul;
+                            break;
+                        }
+                        case "6002":{
+                            numModel = PrimaryController.catNumAdul;
+                            break;
+                        }
+                        case "6003":{
+                            numModel = PrimaryController.catNumAdul;
+                            break;
+                        }
+                        case "6004":{
+                            numModel = PrimaryController.catNumAdul;
+                            break;
+                        }
+                        case "6022":{
+                            numModel = PrimaryController.catNumAdul;
+                            break;
+                        }
+                        default:{
+                            numModel = PrimaryController.catNumMalha;
+                        }
+                    }
                 }
             }
 
-            int loopMax = 0;
-            do {
-                if (numModel[loopMax] == large) {
-                    break;
-                } else {
-                    r1.setText(group + style + brand + style + model);
-                    r1.addBreak();
-                    r1.setText(String.valueOf(numModel[loopMax]));
-                    r1.addBreak();
+            for (int loop = 0; loop < numModel.length; loop++) {
+                if (numModel[loop] == small) {
+                    this.smallinfo = loop;
                 }
-                loopMax++;
-            } while (loopMax < numModel.length);
+                if (numModel[loop] == large) {
+                    this.largeinfo = loop + 1;
+                }
+            }
+
+            for (int loop = smallinfo; loop < largeinfo; loop++) {
+                r1.setText(group + style + brand + style + model);
+                r1.addBreak();
+                r1.setText(String.valueOf(numModel[loop]));
+                r1.addBreak();
+            }
 
             if (!print) {
                 Saver save = new Saver(doc);
