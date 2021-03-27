@@ -17,7 +17,7 @@ import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTPageMar;
 
 public class Exporter {
 
-    public String group, style, brand, model, small, large;
+    public String group, style, brand, model, small, large, numModel[];
     public boolean print;
 
     public Exporter(String group, String style, String brand, String model, String small, String large, boolean print) throws IOException {
@@ -31,8 +31,6 @@ public class Exporter {
     }
 
     public void fileFormater() throws IOException {
-        int sml = Integer.parseInt(small);
-        int lrg = Integer.parseInt(large);
 
         try (XWPFDocument doc = new XWPFDocument()) {
 
@@ -60,13 +58,38 @@ public class Exporter {
             r1.setBold(true);
             r1.setFontSize(72);
             r1.setFontFamily("Times New Roman");
-            while (sml <= lrg) {
-                r1.setText(group + style + brand + style + model);
-                r1.addBreak();
-                r1.setText(String.valueOf(sml));
-                r1.addBreak();
-                sml += 2;
+
+            switch (brand) {
+                case "94": {
+                    numModel = PrimaryController.catNumBaby;
+                    break;
+                }
+                case "95": {
+                    numModel = PrimaryController.catNumKids;
+                    break;
+                }
+                case "96": {
+                    numModel = PrimaryController.catNumYoung;
+                    break;
+                }
+                default: {
+                    numModel = PrimaryController.catNumAdul;
+                }
             }
+
+            int loopMax = 0;
+            do {
+                if (numModel[loopMax] == large) {
+                    break;
+                } else {
+                    r1.setText(group + style + brand + style + model);
+                    r1.addBreak();
+                    r1.setText(String.valueOf(numModel[loopMax]));
+                    r1.addBreak();
+                }
+                loopMax++;
+            } while (loopMax < numModel.length);
+
             if (!print) {
                 Saver save = new Saver(doc);
                 save.writeFile();
