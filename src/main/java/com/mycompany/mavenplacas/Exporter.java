@@ -17,9 +17,9 @@ import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTPageMar;
 
 public class Exporter {
 
-    public String group, style, brand, model, small, large, numModel[];
-    public boolean print;
-    private int smallinfo, largeinfo;
+    public String group, style, brand, model, kidsmall, kidlarge, small, large, numModel[], numKidsModel[];
+    public boolean print, set;
+    private int smallinfo, largeinfo, smallkids, largekids;
 
     public Exporter(String group, String style, String brand, String model, String small, String large, boolean print) throws IOException {
         this.group = group;
@@ -29,6 +29,55 @@ public class Exporter {
         this.small = small;
         this.large = large;
         this.print = print;
+    }
+
+    public Exporter(String group, String style, String brand, String model, String kidsmall, String kidlarge, String small, String large, boolean print, boolean set) throws IOException {
+        this.group = group;
+        this.style = style;
+        this.brand = brand;
+        this.model = model;
+        this.kidsmall = kidsmall;
+        this.kidlarge = kidlarge;
+        this.small = small;
+        this.large = large;
+        this.print = print;
+        this.set = set;
+    }
+
+    public void groupFilter() {
+        switch (group) {
+            case "5001": {
+                numModel = PrimaryController.catNumAdul;
+                break;
+            }
+            case "5002": {
+                numModel = PrimaryController.catNumAdul;
+                break;
+            }
+            case "6001": {
+                numModel = PrimaryController.catNumAdul;
+                break;
+            }
+            case "6002": {
+                numModel = PrimaryController.catNumAdul;
+                break;
+            }
+            case "6003": {
+                numModel = PrimaryController.catNumAdul;
+                break;
+            }
+            case "6004": {
+                numModel = PrimaryController.catNumAdul;
+                break;
+            }
+            case "6022": {
+                numModel = PrimaryController.catNumAdul;
+                break;
+            }
+            default: {
+                numModel = PrimaryController.catNumMalha;
+            }
+        }
     }
 
     public void fileFormater() throws IOException {
@@ -61,6 +110,11 @@ public class Exporter {
             r1.setFontFamily("Times New Roman");
 
             switch (brand) {
+                case "91": {
+                    numKidsModel = PrimaryController.catNumKids;
+                    groupFilter();
+                    break;
+                }
                 case "94": {
                     numModel = PrimaryController.catNumBaby;
                     break;
@@ -74,39 +128,24 @@ public class Exporter {
                     break;
                 }
                 default: {
-                    switch (group){
-                        case "5001":{
-                            numModel = PrimaryController.catNumAdul;
-                            break;
-                        }
-                        case "5002":{
-                            numModel = PrimaryController.catNumAdul;
-                            break;
-                        }
-                        case "6001":{
-                            numModel = PrimaryController.catNumAdul;
-                            break;
-                        }
-                        case "6002":{
-                            numModel = PrimaryController.catNumAdul;
-                            break;
-                        }
-                        case "6003":{
-                            numModel = PrimaryController.catNumAdul;
-                            break;
-                        }
-                        case "6004":{
-                            numModel = PrimaryController.catNumAdul;
-                            break;
-                        }
-                        case "6022":{
-                            numModel = PrimaryController.catNumAdul;
-                            break;
-                        }
-                        default:{
-                            numModel = PrimaryController.catNumMalha;
-                        }
+                    groupFilter();
+                }
+            }
+            
+            if (set) {
+                for (int loop = 0; loop < numKidsModel.length; loop++) {
+                    if (numKidsModel[loop] == kidsmall) {
+                        this.smallkids = loop;
                     }
+                    if (numKidsModel[loop] == kidlarge) {
+                        this.largekids = loop + 1;
+                    }
+                }
+                for (int loop = smallkids; loop < largekids; loop++) {
+                    r1.setText(group + style + brand + style + model);
+                    r1.addBreak();
+                    r1.setText(String.valueOf(numKidsModel[loop]));
+                    r1.addBreak();
                 }
             }
 

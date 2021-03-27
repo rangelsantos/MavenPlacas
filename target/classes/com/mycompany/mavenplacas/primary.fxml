@@ -7,21 +7,23 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="224.0" prefWidth="413.0" styleClass="backgroundMain" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.mavenplacas.PrimaryController">
+<AnchorPane id="AnchorPane" prefHeight="244.0" prefWidth="413.0" styleClass="backgroundMain" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.mavenplacas.PrimaryController">
     <children>
-      <Button fx:id="btnSave" layoutX="76.0" layoutY="158.0" onAction="#getSave" styleClass="masterButtons" stylesheets="@style.css" text="Salvar" textFill="WHITE">
+      <Button fx:id="btnSave" layoutX="85.0" layoutY="169.0" onAction="#getSave" styleClass="masterButtons" stylesheets="@style.css" text="Salvar" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font></Button>
       <ComboBox fx:id="cbGroup" layoutX="14.0" layoutY="32.0" onAction="#cbGroupListener" prefHeight="25.0" prefWidth="100.0" promptText="Grupo" styleClass="masterComboBox" stylesheets="@style.css" />
       <ComboBox fx:id="cbBrand" layoutX="189.0" layoutY="32.0" onAction="#cbBrandListener" prefHeight="25.0" prefWidth="100.0" promptText="Marca" styleClass="masterComboBox" stylesheets="@style.css" />
-      <ComboBox fx:id="cbSmallSize" layoutX="14.0" layoutY="108.0" prefWidth="150.0" promptText="Menor" styleClass="masterComboBox" stylesheets="@style.css" />
-      <ComboBox fx:id="cbLargeSize" layoutX="189.0" layoutY="108.0" prefWidth="150.0" promptText="Maior" styleClass="masterComboBox" stylesheets="@style.css" />
+      <ComboBox fx:id="cbSmallSize" layoutX="45.0" layoutY="124.0" prefWidth="150.0" promptText="Menor" styleClass="masterComboBox" stylesheets="@style.css" />
+      <ComboBox fx:id="cbLargeSize" layoutX="220.0" layoutY="124.0" prefWidth="150.0" promptText="Maior" styleClass="masterComboBox" stylesheets="@style.css" />
       <TextField fx:id="txtModel" layoutX="297.0" layoutY="32.0" prefHeight="25.0" prefWidth="100.0" promptText="Modelo" styleClass="masterTextField" stylesheets="@style.css" />
       <ComboBox fx:id="cbStyle" layoutX="119.0" layoutY="32.0" prefHeight="25.0" prefWidth="64.0" promptText="-" styleClass="masterComboBox" stylesheets="@style.css" />
-      <Button fx:id="btnPrint" layoutX="216.0" layoutY="158.0" mnemonicParsing="false" onAction="#getPrint" styleClass="masterButtons" stylesheets="@style.css" text="Imprimir" textFill="WHITE">
+      <Button fx:id="btnPrint" layoutX="225.0" layoutY="169.0" mnemonicParsing="false" onAction="#getPrint" styleClass="masterButtons" stylesheets="@style.css" text="Imprimir" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font></Button>
+      <ComboBox fx:id="cbKidsSmallSize" layoutX="45.0" layoutY="78.0" prefWidth="150.0" promptText="Kids Menor" styleClass="masterComboBox" />
+      <ComboBox fx:id="cbKidsLargeSize" layoutX="220.0" layoutY="78.0" prefWidth="150.0" promptText="Kids Maior" styleClass="masterComboBox" />
     </children>
 </AnchorPane>

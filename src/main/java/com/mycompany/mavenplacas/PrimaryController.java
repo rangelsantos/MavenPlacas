@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 public class PrimaryController implements Initializable {
 
     boolean print;
+    boolean set = false;
     public static String catGroup[] = {"5001", "5002", "5003", "5005", "5006", "5007", "5008", "5009", "5010", "5011", "5014", "5015", "5016", "5017", "5018", "5016", "5017", "5018", "5019", "5030", "5049", "5050", "5059", "6001", "6002", "6003", "6004", "6005", "6006", "6007", "6008", "6009", "6010", "6011", "6012", "6013", "6014", "6015", "6016", "6017", "6018", "6019", "6020", "6022", "6024", "6025", "6030", "6034", "6040", "6042", "6045", "7007"};
     public static String catBrand[] = {"22", "89", "91", "94", "95", "96", "97"};
     public static String catStyle[] = {"-", "+", ".", " ", "_", "■"};
@@ -49,6 +50,12 @@ public class PrimaryController implements Initializable {
     private ComboBox<String> cbStyle;
 
     @FXML
+    private ComboBox<String> cbKidsSmallSize;
+
+    @FXML
+    private ComboBox<String> cbKidsLargeSize;
+
+    @FXML
     private void getSave(ActionEvent ae) throws IOException {
         print = false;
         printer();
@@ -61,26 +68,44 @@ public class PrimaryController implements Initializable {
     }
 
     @FXML
-    private void cbBrandListener() {
+    private void cbBrandListener() throws IOException {
         switch (cbBrand.getValue()) {
+            case "91": {
+                cbGroupListener();
+                cbKidsSmallSize.getItems().setAll(catNumKids);
+                cbKidsSmallSize.getSelectionModel().selectFirst();
+                cbKidsLargeSize.getItems().setAll(catNumKids);
+                cbKidsLargeSize.getSelectionModel().selectLast();
+                set = true;
+                showKids(set);
+                break;
+            }
             case "94": {
                 cbSmallSize.getItems().setAll(catNumBaby);
                 cbLargeSize.getItems().setAll(catNumBaby);
+                set = false;
+                showKids(set);
                 break;
             }
             case "95": {
                 cbSmallSize.getItems().setAll(catNumKids);
                 cbLargeSize.getItems().setAll(catNumKids);
+                set = false;
+                showKids(set);
                 break;
             }
             case "96": {
                 cbSmallSize.getItems().setAll(catNumYoung);
                 cbLargeSize.getItems().setAll(catNumYoung);
+                set = false;
+                showKids(set);
                 break;
             }
             default: {
                 if ("22".equals(cbBrand.getValue()) || "97".equals(cbBrand.getValue()) || "89".equals(cbBrand.getValue())) {
                     cbGroupListener();
+                    set = false;
+                    showKids(set);
                 }
             }
         }
@@ -152,6 +177,11 @@ public class PrimaryController implements Initializable {
         cbLargeSize.getSelectionModel().selectLast();
     }
 
+    public void showKids(boolean set) {
+        cbKidsSmallSize.setVisible(set);
+        cbKidsLargeSize.setVisible(set);
+    }
+
     public void emptyErrorMensage() {
         Alert errorMensage = new Alert(AlertType.ERROR);
         errorMensage.setTitle("Erro!");
@@ -174,6 +204,15 @@ public class PrimaryController implements Initializable {
             emptyErrorMensage();
         } else if (cbLargeSize.getValue() == null) {
             emptyErrorMensage();
+        } else if (set) {
+            if (cbKidsSmallSize.getValue() == null) {
+                emptyErrorMensage();
+            } else if (cbKidsLargeSize.getValue() == null) {
+                emptyErrorMensage();
+            } else {
+                Exporter document = new Exporter(cbGroup.getValue(), cbStyle.getValue(), cbBrand.getValue(), txtModel.getText(), cbKidsSmallSize.getValue(), cbKidsLargeSize.getValue(), cbSmallSize.getValue(), cbLargeSize.getValue(), print, set);
+                document.fileFormater();
+            }
         } else {
             Exporter document = new Exporter(cbGroup.getValue(), cbStyle.getValue(), cbBrand.getValue(), txtModel.getText(), cbSmallSize.getValue(), cbLargeSize.getValue(), print);
             document.fileFormater();
@@ -190,5 +229,6 @@ public class PrimaryController implements Initializable {
         cbStyle.setEditable(true);
         cbSmallSize.getItems().setAll(catNumAdul);
         cbLargeSize.getItems().setAll(catNumAdul);
+        showKids(set);
     }
 }
