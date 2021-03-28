@@ -10,7 +10,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.TextField;
+import javafx.stage.StageStyle;
 
 public class PrimaryController implements Initializable {
 
@@ -183,8 +185,11 @@ public class PrimaryController implements Initializable {
     }
 
     public void emptyErrorMensage() {
-        Alert errorMensage = new Alert(AlertType.ERROR);
-        errorMensage.setTitle("Erro!");
+        Alert errorMensage = new Alert(AlertType.INFORMATION);
+        DialogPane errorDialog = errorMensage.getDialogPane();
+        errorMensage.initStyle(StageStyle.UNDECORATED);
+        errorDialog.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        errorDialog.getStyleClass().add("errorDialog");
         errorMensage.setHeaderText("Existem Campos Vazios!");
         errorMensage.setContentText("Por favor, preencha todos os campos");
         errorMensage.showAndWait();
