@@ -20,7 +20,7 @@ public class PrimaryController implements Initializable {
     boolean set = false;
     public static String catGroup[] = {"5001", "5002", "5003", "5005", "5006", "5007", "5008", "5009", "5010", "5011", "5014", "5015", "5016", "5017", "5018", "5016", "5017", "5018", "5019", "5030", "5049", "5050", "5059", "6001", "6002", "6003", "6004", "6005", "6006", "6007", "6008", "6009", "6010", "6011", "6012", "6013", "6014", "6015", "6016", "6017", "6018", "6019", "6020", "6022", "6024", "6025", "6030", "6034", "6040", "6042", "6045", "7007"};
     public static String catBrand[] = {"22", "89", "91", "94", "95", "96", "97"};
-    public static String catStyle[] = {"-", "+", ".", " ", "_", "■"};
+    public static String catStyle[] = {"-", "+", "*", ".", " ", "_", "■"};
     public static String catNumAdul[] = {"34", "36", "38", "40", "42", "44", "46", "48", "50", "52", "54", "56", "58"};
     public static String catNumMalha[] = {"PP", "P", "M", "G", "GG", "EG", "EGG", "XGG", "XXG"};
     public static String catNumBaby[] = {"P", "M", "G", "GG", "EG"};

@@ -23,7 +23,7 @@ public class App extends Application {
         JMetro metro = new JMetro(root, Style.DARK);
         scene = new Scene(root);
         stage.setResizable(false);
-        stage.setTitle("Placas (TESTE v0.9-a.1 FAT) - Rangel");
+        stage.setTitle("Placas (TESTE v0.9-a.2 FAT) - Rangel");
         stage.setScene(scene);
         stage.show();
     }
