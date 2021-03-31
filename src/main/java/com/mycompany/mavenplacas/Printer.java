@@ -43,8 +43,9 @@ public class Printer {
         pageFormat.setPaper(paper);
         printerJob.setPrintable(document, pageFormat);
         try {
-            printerJob.printDialog();
+            if (printerJob.printDialog()){
             printerJob.print();
+            }
         } catch (PrinterException e) {
         }
     }

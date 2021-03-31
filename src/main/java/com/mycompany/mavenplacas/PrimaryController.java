@@ -1,5 +1,6 @@
 package com.mycompany.mavenplacas;
 
+import java.awt.Toolkit;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,7 +22,7 @@ public class PrimaryController implements Initializable {
     public static String catGroup[] = {"5001", "5002", "5003", "5005", "5006", "5007", "5008", "5009", "5010", "5011", "5014", "5015", "5016", "5017", "5018", "5016", "5017", "5018", "5019", "5030", "5049", "5050", "5059", "6001", "6002", "6003", "6004", "6005", "6006", "6007", "6008", "6009", "6010", "6011", "6012", "6013", "6014", "6015", "6016", "6017", "6018", "6019", "6020", "6022", "6024", "6025", "6030", "6034", "6040", "6042", "6045", "7007"};
     public static String catBrand[] = {"22", "89", "91", "94", "95", "96", "97"};
     public static String catStyle[] = {"-", "+", "*", ".", " ", "_", "■"};
-    public static String catNumAdul[] = {"34", "36", "38", "40", "42", "44", "46", "48", "50", "52", "54", "56", "58"};
+    public static String catNumAdul[] = {"34", "36", "38", "40", "42", "44", "46", "48", "50", "52", "54", "56", "58", "P", "M", "G", "GG"};
     public static String catNumMalha[] = {"PP", "P", "M", "G", "GG", "EG", "EGG", "XGG", "XXG"};
     public static String catNumBaby[] = {"P", "M", "G", "GG", "EG"};
     public static String catNumKids[] = {"1", "2", "3", "4", "6", "8", "10", "12", "14", "16", "18"};
@@ -189,9 +190,22 @@ public class PrimaryController implements Initializable {
         DialogPane errorDialog = errorMensage.getDialogPane();
         errorMensage.initStyle(StageStyle.UNDECORATED);
         errorDialog.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-        errorDialog.getStyleClass().add("errorDialog");
+        errorDialog.getStyleClass().add("emptyDialog");
         errorMensage.setHeaderText("Existem Campos Vazios!");
         errorMensage.setContentText("Por favor, preencha todos os campos");
+        Toolkit.getDefaultToolkit().beep();
+        errorMensage.showAndWait();
+    }
+    
+    public void sizeErrorMensage() {
+        Alert errorMensage = new Alert(AlertType.ERROR);
+        DialogPane errorDialog = errorMensage.getDialogPane();
+        errorMensage.initStyle(StageStyle.UNDECORATED);
+        errorDialog.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        errorDialog.getStyleClass().add("sizeDialog");
+        errorMensage.setHeaderText("Tamanhos Invalidos!");
+        errorMensage.setContentText("O tamanho menor selecionado é maior que o tamanho maior selecionado");
+        Toolkit.getDefaultToolkit().beep();
         errorMensage.showAndWait();
     }
 
@@ -214,10 +228,16 @@ public class PrimaryController implements Initializable {
                 emptyErrorMensage();
             } else if (cbKidsLargeSize.getValue() == null) {
                 emptyErrorMensage();
+            } else if ((Integer.parseInt(cbKidsSmallSize.getValue())) > (Integer.parseInt(cbKidsLargeSize.getValue()))) {
+                sizeErrorMensage();
+            } else if ((Integer.parseInt(cbSmallSize.getValue())) > (Integer.parseInt(cbLargeSize.getValue()))) {
+                sizeErrorMensage();
             } else {
                 Exporter document = new Exporter(cbGroup.getValue(), cbStyle.getValue(), cbBrand.getValue(), txtModel.getText(), cbKidsSmallSize.getValue(), cbKidsLargeSize.getValue(), cbSmallSize.getValue(), cbLargeSize.getValue(), print, set);
                 document.fileFormater();
             }
+        } else if ((Integer.parseInt(cbSmallSize.getValue())) > (Integer.parseInt(cbLargeSize.getValue()))) {
+            sizeErrorMensage();
         } else {
             Exporter document = new Exporter(cbGroup.getValue(), cbStyle.getValue(), cbBrand.getValue(), txtModel.getText(), cbSmallSize.getValue(), cbLargeSize.getValue(), print);
             document.fileFormater();

@@ -94,15 +94,15 @@ public class Exporter {
             }
             pageMar.setLeft(BigInteger.valueOf(0));
             pageMar.setRight(BigInteger.valueOf(0));
-            pageMar.setTop(BigInteger.valueOf(0));
-            pageMar.setBottom(BigInteger.valueOf(0));
+            pageMar.setTop(BigInteger.valueOf(50));
+            pageMar.setBottom(BigInteger.valueOf(50));
             pageMar.setFooter(BigInteger.valueOf(0));
             pageMar.setHeader(BigInteger.valueOf(0));
             pageMar.setGutter(BigInteger.valueOf(0));
 
             XWPFParagraph p1 = doc.createParagraph();
             p1.setAlignment(ParagraphAlignment.CENTER);
-            p1.setSpacingBetween(0.9);
+            p1.setSpacingBetween(0.95f);
 
             XWPFRun r1 = p1.createRun();
             r1.setBold(true);
