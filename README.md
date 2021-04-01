@@ -1,6 +1,6 @@
 # MavenPlacas
 
-Versão de Teste v0.9-a.4
+Versão de Teste v0.9-alpha.4
 
 Tela principal
 
