@@ -7,17 +7,21 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="244.0" prefWidth="413.0" styleClass="backgroundMain" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.mavenplacas.PrimaryController">
+<AnchorPane prefHeight="247.0" prefWidth="413.0" styleClass="backgroundMain" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.mavenplacas.PrimaryController">
     <children>
-      <Button fx:id="btnSave" layoutX="75.0" layoutY="169.0" onAction="#getSave" prefHeight="50.0" prefWidth="120.0" style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Salvar" />
-      <ComboBox fx:id="cbGroup" layoutX="17.0" layoutY="33.0" onAction="#cbGroupListener" prefHeight="25.0" prefWidth="100.0" promptText="Grupo" />
-      <ComboBox fx:id="cbBrand" layoutX="192.0" layoutY="33.0" onAction="#cbBrandListener" prefHeight="25.0" prefWidth="100.0" promptText="Marca" />
-      <ComboBox fx:id="cbSmallSize" layoutX="69.0" layoutY="125.0" prefWidth="100.0" />
-      <ComboBox fx:id="cbLargeSize" layoutX="244.0" layoutY="125.0" prefWidth="100.0" />
-      <TextField fx:id="txtModel" layoutX="297.0" layoutY="33.0" prefHeight="27.0" prefWidth="100.0" promptText="Modelo" />
-      <ComboBox fx:id="cbStyle" layoutX="122.0" layoutY="33.0" prefHeight="25.0" prefWidth="64.0" promptText="-" />
-      <Button fx:id="btnPrint" layoutX="219.0" layoutY="169.0" mnemonicParsing="false" onAction="#getPrint" prefHeight="50.0" prefWidth="120.0" style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Imprimir" />
-      <ComboBox fx:id="cbKidsSmallSize" layoutX="69.0" layoutY="79.0" prefWidth="100.0" />
-      <ComboBox fx:id="cbKidsLargeSize" layoutX="244.0" layoutY="79.0" prefWidth="100.0" />
+      <Button fx:id="btnSave" layoutX="75.0" layoutY="178.0" onAction="#getSave" prefHeight="50.0" prefWidth="120.0" style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Salvar" />
+      <ComboBox fx:id="cbGroup" layoutX="17.0" layoutY="42.0" onAction="#cbGroupListener" prefHeight="25.0" prefWidth="100.0" promptText="Grupo" />
+      <ComboBox fx:id="cbBrand" layoutX="192.0" layoutY="42.0" onAction="#cbBrandListener" prefHeight="25.0" prefWidth="100.0" promptText="Marca" />
+      <ComboBox fx:id="cbSmallSize" layoutX="69.0" layoutY="134.0" prefWidth="100.0" />
+      <ComboBox fx:id="cbLargeSize" layoutX="244.0" layoutY="134.0" prefWidth="100.0" />
+      <TextField fx:id="txtModel" layoutX="297.0" layoutY="42.0" prefHeight="26.0" prefWidth="100.0" promptText="Modelo" />
+      <ComboBox fx:id="cbStyle" layoutX="122.0" layoutY="42.0" prefHeight="25.0" prefWidth="64.0" promptText="-" />
+      <Button fx:id="btnPrint" layoutX="219.0" layoutY="178.0" mnemonicParsing="false" onAction="#getPrint" prefHeight="50.0" prefWidth="120.0" style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Imprimir" />
+      <ComboBox fx:id="cbKidsSmallSize" layoutX="69.0" layoutY="88.0" prefWidth="100.0" />
+      <ComboBox fx:id="cbKidsLargeSize" layoutX="244.0" layoutY="88.0" prefWidth="100.0" />
+      <Button id="close" fx:id="closeWindow" layoutX="390.0" mnemonicParsing="false" onAction="#buttonClose" stylesheets="@style.css" text="X" />
+      <Button fx:id="minimizeWindow" layoutX="365.0" mnemonicParsing="false" onAction="#buttonMinimize" text="_" />
+      <Label layoutX="100.0" layoutY="7.0" text="Placas (TESTE v0.9-a.4 FAT) - Rangel" textFill="WHITE" />
+      <Label fx:id="iconImage" layoutX="4.0" layoutY="5.0" />
     </children>
 </AnchorPane>

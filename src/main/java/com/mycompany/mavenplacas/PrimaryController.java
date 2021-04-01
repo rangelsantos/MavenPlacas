@@ -12,7 +12,11 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DialogPane;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class PrimaryController implements Initializable {
@@ -27,6 +31,15 @@ public class PrimaryController implements Initializable {
     public static String catNumBaby[] = {"P", "M", "G", "GG", "EG"};
     public static String catNumKids[] = {"1", "2", "3", "4", "6", "8", "10", "12", "14", "16", "18"};
     public static String catNumYoung[] = {"12", "14", "16", "18"};
+    
+    @FXML
+    private Label iconImage = new Label();
+    
+    @FXML
+    public Button closeWindow;
+    
+    @FXML
+    public Button minimizeWindow;
 
     @FXML
     private Button btnSave;
@@ -208,6 +221,14 @@ public class PrimaryController implements Initializable {
         Toolkit.getDefaultToolkit().beep();
         errorMensage.showAndWait();
     }
+    
+    public void loadIcon(){
+        Image icon = new Image(getClass().getResourceAsStream("icon.png"));
+        ImageView image = new ImageView(icon);
+        image.setFitHeight(20);
+        image.setPreserveRatio(true);
+        iconImage.setGraphic(image);
+    }
 
     public void printer() throws IOException {
         if (cbStyle.getValue() == null) {
@@ -228,24 +249,37 @@ public class PrimaryController implements Initializable {
                 emptyErrorMensage();
             } else if (cbKidsLargeSize.getValue() == null) {
                 emptyErrorMensage();
-            } else if ((Integer.parseInt(cbKidsSmallSize.getValue())) > (Integer.parseInt(cbKidsLargeSize.getValue()))) {
+            } else if (cbKidsSmallSize.getSelectionModel().getSelectedIndex() > cbKidsLargeSize.getSelectionModel().getSelectedIndex()) {
                 sizeErrorMensage();
-            } else if ((Integer.parseInt(cbSmallSize.getValue())) > (Integer.parseInt(cbLargeSize.getValue()))) {
+            } else if (cbSmallSize.getSelectionModel().getSelectedIndex() > cbLargeSize.getSelectionModel().getSelectedIndex()) {
                 sizeErrorMensage();
             } else {
                 Exporter document = new Exporter(cbGroup.getValue(), cbStyle.getValue(), cbBrand.getValue(), txtModel.getText(), cbKidsSmallSize.getValue(), cbKidsLargeSize.getValue(), cbSmallSize.getValue(), cbLargeSize.getValue(), print, set);
                 document.fileFormater();
             }
-        } else if ((Integer.parseInt(cbSmallSize.getValue())) > (Integer.parseInt(cbLargeSize.getValue()))) {
+        } else if (cbSmallSize.getSelectionModel().getSelectedIndex() > cbLargeSize.getSelectionModel().getSelectedIndex()) {
             sizeErrorMensage();
         } else {
             Exporter document = new Exporter(cbGroup.getValue(), cbStyle.getValue(), cbBrand.getValue(), txtModel.getText(), cbSmallSize.getValue(), cbLargeSize.getValue(), print);
             document.fileFormater();
         }
     }
+    
+    @FXML
+    public void buttonClose(ActionEvent event) {
+        Stage stage = (Stage) closeWindow.getScene().getWindow();
+        stage.close();
+    }
+    
+    @FXML
+    public void buttonMinimize(ActionEvent event) {
+        Stage stage = (Stage) minimizeWindow.getScene().getWindow();
+        stage.setIconified(true);
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        loadIcon();
         cbGroup.getItems().setAll(catGroup);
         cbGroup.setEditable(true);
         cbBrand.getItems().setAll(catBrand);
