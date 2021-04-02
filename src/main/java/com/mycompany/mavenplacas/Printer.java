@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.mavenplacas;
 
 import com.spire.doc.Document;
@@ -16,8 +11,7 @@ import java.io.FileOutputStream;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 
 /**
- *
- * @author Acme
+ * JavaFX App, created by Rangel Santos
  */
 public class Printer {
 
@@ -26,27 +20,34 @@ public class Printer {
     public Printer(XWPFDocument doc) {
         this.doc = doc;
     }
-
+    
+    //funcao que escreve um arquivo temporario do disco e em seguida a abre para a impressao
     public void nicePrint() throws IOException {
+        //cria o e salva arquivo temporario no disco
         File tempFile = File.createTempFile("printable", ".docx");
         try (FileOutputStream novo = new FileOutputStream(tempFile.getCanonicalPath())) {
             doc.write(novo);
+        } catch (IOException e){
+            System.out.println("falha ao criar o arquivo temporario");
         }
         Document document = new Document();
-        System.out.println(tempFile.getCanonicalPath());
+        //carrega o documento do disco
         document.loadFromFile(tempFile.getCanonicalPath());
         PrinterJob printerJob = PrinterJob.getPrinterJob();
         PageFormat pageFormat = printerJob.defaultPage();
         Paper paper = pageFormat.getPaper();
         paper.setImageableArea(0, 0, pageFormat.getWidth(), pageFormat.getHeight());
+        //quantidade de copias
         printerJob.setCopies(1);
         pageFormat.setPaper(paper);
         printerJob.setPrintable(document, pageFormat);
         try {
+            //tenta a confirmacao da impressao, caso consiga imprime o documento
             if (printerJob.printDialog()){
             printerJob.print();
             }
         } catch (PrinterException e) {
+            System.out.println("falha ao imprimir");
         }
     }
 }

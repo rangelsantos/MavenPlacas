@@ -1,3 +1,8 @@
+/**
+ * JavaFX App, created by Rangel Santos
+ */
+
+/*App style*/
 .backgroundMain{
     -fx-background-color: #1f1f1f;
 }
@@ -12,7 +17,6 @@
 }
 
 /*emptyDialog style*/
-
 .emptyDialog{
     -fx-background-color: #61a2da;
 }
@@ -47,7 +51,6 @@
 }
 
 /*sizeDialog style*/
-
 .sizeDialog{
     -fx-background-color: #A63232;
 }
