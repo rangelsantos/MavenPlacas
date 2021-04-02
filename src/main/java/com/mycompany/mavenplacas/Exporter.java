@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.mavenplacas;
 
 import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
@@ -15,12 +10,16 @@ import java.math.BigInteger;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTSectPr;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTPageMar;
 
+/**
+ * JavaFX App, created by Rangel Santos
+ */
 public class Exporter {
 
     public String group, style, brand, model, kidsmall, kidlarge, small, large, numModel[], numKidsModel[];
     public boolean print, set;
     private int smallinfo, largeinfo, smallkids, largekids;
-
+    
+    //construtor que recebe os valores na opção padrão
     public Exporter(String group, String style, String brand, String model, String small, String large, boolean print) throws IOException {
         this.group = group;
         this.style = style;
@@ -30,7 +29,8 @@ public class Exporter {
         this.large = large;
         this.print = print;
     }
-
+    
+    //construtor que recebe os valores adcionais na opção para marca '91'
     public Exporter(String group, String style, String brand, String model, String kidsmall, String kidlarge, String small, String large, boolean print, boolean set) throws IOException {
         this.group = group;
         this.style = style;
@@ -43,7 +43,10 @@ public class Exporter {
         this.print = print;
         this.set = set;
     }
-
+    
+    /*funcao que seta o array com tamanhos usados no
+    preechimento do documento baseado no valor variavel 'group'
+    mas e o 'OR'? nao funcionou...*/
     public void groupFilter() {
         switch (group) {
             case "5001": {
@@ -79,11 +82,12 @@ public class Exporter {
             }
         }
     }
-
+    
+    //funcao que constroi o documento
     public void fileFormater() throws IOException {
 
         try (XWPFDocument doc = new XWPFDocument()) {
-
+            //seta as margem da pagina
             CTSectPr sectPr = doc.getDocument().getBody().getSectPr();
             if (sectPr == null) {
                 sectPr = doc.getDocument().getBody().addNewSectPr();
@@ -99,16 +103,18 @@ public class Exporter {
             pageMar.setFooter(BigInteger.valueOf(0));
             pageMar.setHeader(BigInteger.valueOf(0));
             pageMar.setGutter(BigInteger.valueOf(0));
-
+            //cria o paragrafo
             XWPFParagraph p1 = doc.createParagraph();
             p1.setAlignment(ParagraphAlignment.CENTER);
             p1.setSpacingBetween(0.95f);
-
+            //cria a linha do paragrafo, e seta como seram os caracteres
             XWPFRun r1 = p1.createRun();
             r1.setBold(true);
             r1.setFontSize(72);
             r1.setFontFamily("Times New Roman");
-
+            /*seleciona os tamanhos baseados na marca, caso '91' seta o array 'numKidsModel' com 
+            os tamanhos da marca '95' e chama a funcao 'groupFilter' que seta os tamanhos adultos,
+            caso nao seja infantil chama a funcao 'groupFilter' que seta os tamanhos adultos*/
             switch (brand) {
                 case "91": {
                     numKidsModel = PrimaryController.catNumKids;
@@ -132,6 +138,7 @@ public class Exporter {
                 }
             }
             
+            //caso 'set = true' imprime o modelo e os tamanhos da marca '91' selecionados no documento
             if (set) {
                 for (int loop = 0; loop < numKidsModel.length; loop++) {
                     if (numKidsModel[loop] == kidsmall) {
@@ -148,7 +155,8 @@ public class Exporter {
                     r1.addBreak();
                 }
             }
-
+            
+            //imprime o modelos e os tamanhos selecionados no documento
             for (int loop = 0; loop < numModel.length; loop++) {
                 if (numModel[loop] == small) {
                     this.smallinfo = loop;
@@ -164,14 +172,19 @@ public class Exporter {
                 r1.setText(String.valueOf(numModel[loop]));
                 r1.addBreak();
             }
-
+            
+            //caso o botao selecionado seja salvar, instanciamos um novo 'Saver'
             if (!print) {
                 Saver save = new Saver(doc);
                 save.writeFile();
+             
+            //caso o botao selecionado seja imprimir, instanciamos um novo 'Printer'
             } else if (print) {
                 Printer printing = new Printer(doc);
                 printing.nicePrint();
             }
+        } catch (IOException e){
+            System.out.println("falha ao criar um novo documento");
         }
     }
 }
