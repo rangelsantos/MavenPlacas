@@ -1,7 +1,8 @@
-com\mycompany\mavenplacas\App$2.class
-com\mycompany\mavenplacas\Printer.class
-com\mycompany\mavenplacas\Saver.class
-com\mycompany\mavenplacas\Exporter.class
-com\mycompany\mavenplacas\PrimaryController.class
-com\mycompany\mavenplacas\App.class
-com\mycompany\mavenplacas\App$1.class
+main\App$2.class
+export\Saver.class
+main\App.class
+export\Exporter.class
+export\Printer.class
+main\App$1.class
+common\Listas.class
+main\PrimaryController.class

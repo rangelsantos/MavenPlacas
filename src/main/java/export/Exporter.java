@@ -1,5 +1,6 @@
-package com.mycompany.mavenplacas;
+package export;
 
+import main.PrimaryController;
 import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
@@ -13,7 +14,7 @@ import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTPageMar;
 /**
  * JavaFX App, created by Rangel Santos
  */
-public class Exporter {
+public class Exporter extends PrimaryController {
 
     public String group, style, brand, model, kidsmall, kidlarge, small, large, numModel[], numKidsModel[];
     public boolean print, set;
@@ -50,35 +51,35 @@ public class Exporter {
     public void groupFilter() {
         switch (group) {
             case "5001": {
-                numModel = PrimaryController.catNumAdul;
+                numModel = lista.getCatNumAdul();
                 break;
             }
             case "5002": {
-                numModel = PrimaryController.catNumAdul;
+                numModel = lista.getCatNumAdul();
                 break;
             }
             case "6001": {
-                numModel = PrimaryController.catNumAdul;
+                numModel = lista.getCatNumAdul();
                 break;
             }
             case "6002": {
-                numModel = PrimaryController.catNumAdul;
+                numModel = lista.getCatNumAdul();
                 break;
             }
             case "6003": {
-                numModel = PrimaryController.catNumAdul;
+                numModel = lista.getCatNumAdul();
                 break;
             }
             case "6004": {
-                numModel = PrimaryController.catNumAdul;
+                numModel = lista.getCatNumAdul();
                 break;
             }
             case "6022": {
-                numModel = PrimaryController.catNumAdul;
+                numModel = lista.getCatNumAdul();
                 break;
             }
             default: {
-                numModel = PrimaryController.catNumMalha;
+                numModel = lista.getCatNumMalha();
             }
         }
     }
@@ -117,20 +118,20 @@ public class Exporter {
             caso nao seja infantil chama a funcao 'groupFilter' que seta os tamanhos adultos*/
             switch (brand) {
                 case "91": {
-                    numKidsModel = PrimaryController.catNumKids;
+                    numKidsModel = lista.getCatNumKids();
                     groupFilter();
                     break;
                 }
                 case "94": {
-                    numModel = PrimaryController.catNumBaby;
+                    numModel = lista.getCatNumBaby();
                     break;
                 }
                 case "95": {
-                    numModel = PrimaryController.catNumKids;
+                    numModel = lista.getCatNumKids();
                     break;
                 }
                 case "96": {
-                    numModel = PrimaryController.catNumYoung;
+                    numModel = lista.getCatNumYoung();
                     break;
                 }
                 default: {

@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.mycompany</groupId>
     <artifactId>MavenPlacas</artifactId>
-    <version>0.9-a.4 FAT</version>
+    <version>0.9-b.1 FAT</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -33,7 +33,7 @@
                         <configuration>
                             <classifier>spring-boot</classifier>
                             <mainClass>
-                                com.mycompany.mavenplacas.App
+                                main.App
                             </mainClass>
                         </configuration>
                     </execution>

@@ -1,5 +1,6 @@
-C:\Users\Acme\Documents\NetBeansProjects\MavenPlacas\src\main\java\com\mycompany\mavenplacas\Saver.java
-C:\Users\Acme\Documents\NetBeansProjects\MavenPlacas\src\main\java\com\mycompany\mavenplacas\Printer.java
-C:\Users\Acme\Documents\NetBeansProjects\MavenPlacas\src\main\java\com\mycompany\mavenplacas\Exporter.java
-C:\Users\Acme\Documents\NetBeansProjects\MavenPlacas\src\main\java\com\mycompany\mavenplacas\App.java
-C:\Users\Acme\Documents\NetBeansProjects\MavenPlacas\src\main\java\com\mycompany\mavenplacas\PrimaryController.java
+C:\Users\Acme\Documents\NetBeansProjects\MavenPlacas\src\main\java\main\App.java
+C:\Users\Acme\Documents\NetBeansProjects\MavenPlacas\src\main\java\export\Exporter.java
+C:\Users\Acme\Documents\NetBeansProjects\MavenPlacas\src\main\java\common\Listas.java
+C:\Users\Acme\Documents\NetBeansProjects\MavenPlacas\src\main\java\main\PrimaryController.java
+C:\Users\Acme\Documents\NetBeansProjects\MavenPlacas\src\main\java\export\Saver.java
+C:\Users\Acme\Documents\NetBeansProjects\MavenPlacas\src\main\java\export\Printer.java

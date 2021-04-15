@@ -1,5 +1,7 @@
-package com.mycompany.mavenplacas;
+package main;
 
+import common.Listas;
+import export.Exporter;
 import java.awt.Toolkit;
 import java.io.IOException;
 import java.net.URL;
@@ -24,19 +26,12 @@ import javafx.stage.StageStyle;
  */
 public class PrimaryController implements Initializable {
     //booleano que controla a opção de impressão ou salvar
-    boolean print;
+    private boolean print;
     //booleano que vai indicar a opção por uso dos tamanhos adcionais
-    boolean set = false;
-    //arrays com os tamanhos, tambem são usados pela classe exporter
-    public static String catGroup[] = {"5001", "5002", "5003", "5005", "5006", "5007", "5008", "5009", "5010", "5011", "5014", "5015", "5016", "5017", "5018", "5016", "5017", "5018", "5019", "5030", "5049", "5050", "5059", "6001", "6002", "6003", "6004", "6005", "6006", "6007", "6008", "6009", "6010", "6011", "6012", "6013", "6014", "6015", "6016", "6017", "6018", "6019", "6020", "6022", "6024", "6025", "6030", "6034", "6040", "6042", "6045", "7007"};
-    public static String catBrand[] = {"22", "89", "91", "94", "95", "96", "97"};
-    public static String catStyle[] = {"-", "+", "*", ".", " ", "_", "■"};
-    public static String catNumAdul[] = {"34", "36", "38", "40", "42", "44", "46", "48", "50", "52", "54", "56", "58", "P", "M", "G", "GG"};
-    public static String catNumMalha[] = {"PP", "P", "M", "G", "GG", "EG", "EGG", "XGG", "XXG"};
-    public static String catNumBaby[] = {"P", "M", "G", "GG", "EG"};
-    public static String catNumKids[] = {"1", "2", "3", "4", "6", "8", "10", "12", "14", "16", "18"};
-    public static String catNumYoung[] = {"12", "14", "16", "18"};
-    
+    private boolean set = false;
+    //instancia o objeto com os arrays de tamanhos, tambem são usados na classe exporter
+    public Listas lista = new Listas();
+
     //Controles da interface FXML
     @FXML
     private Label iconImage = new Label();
@@ -101,9 +96,9 @@ public class PrimaryController implements Initializable {
             que torna os campos adicionais visiveis*/
             case "91": {
                 cbGroupListener();
-                cbKidsSmallSize.getItems().setAll(catNumKids);
+                cbKidsSmallSize.getItems().setAll(lista.getCatNumKids());
                 cbKidsSmallSize.getSelectionModel().selectFirst();
-                cbKidsLargeSize.getItems().setAll(catNumKids);
+                cbKidsLargeSize.getItems().setAll(lista.getCatNumKids());
                 cbKidsLargeSize.getSelectionModel().selectLast();
                 set = true;
                 showKids(set);
@@ -113,22 +108,22 @@ public class PrimaryController implements Initializable {
             seta booleano set como false e passa como parametro para a funcao 'showKids', 
             que torna os campos adicionais invisiveis*/
             case "94": {
-                cbSmallSize.getItems().setAll(catNumBaby);
-                cbLargeSize.getItems().setAll(catNumBaby);
+                cbSmallSize.getItems().setAll(lista.getCatNumBaby());
+                cbLargeSize.getItems().setAll(lista.getCatNumBaby());
                 set = false;
                 showKids(set);
                 break;
             }
             case "95": {
-                cbSmallSize.getItems().setAll(catNumKids);
-                cbLargeSize.getItems().setAll(catNumKids);
+                cbSmallSize.getItems().setAll(lista.getCatNumKids());
+                cbLargeSize.getItems().setAll(lista.getCatNumKids());
                 set = false;
                 showKids(set);
                 break;
             }
             case "96": {
-                cbSmallSize.getItems().setAll(catNumYoung);
-                cbLargeSize.getItems().setAll(catNumYoung);
+                cbSmallSize.getItems().setAll(lista.getCatNumYoung());
+                cbLargeSize.getItems().setAll(lista.getCatNumYoung());
                 set = false;
                 showKids(set);
                 break;
@@ -201,8 +196,8 @@ public class PrimaryController implements Initializable {
                         break;
                     }
                     default: {
-                        cbSmallSize.getItems().setAll(catNumMalha);
-                        cbLargeSize.getItems().setAll(catNumMalha);
+                        cbSmallSize.getItems().setAll(lista.getCatNumMalha());
+                        cbLargeSize.getItems().setAll(lista.getCatNumMalha());
                     }
                 }
             }
@@ -212,8 +207,8 @@ public class PrimaryController implements Initializable {
     
     //seta os tamanhos de 34 a 58 e P a GG nos comboxes de tamanhos pricipais
     public void setNumAdul() {
-        cbSmallSize.getItems().setAll(catNumAdul);
-        cbLargeSize.getItems().setAll(catNumAdul);
+        cbSmallSize.getItems().setAll(lista.getCatNumAdul());
+        cbLargeSize.getItems().setAll(lista.getCatNumAdul());
     }
     
     /*seta o cbSmallSize (combobox pricipal do tamanho menor) na primeira opção
@@ -329,14 +324,14 @@ public class PrimaryController implements Initializable {
         //carrega o icone
         loadIcon();
         //carrega os arrays com as opçoes padrao para os comboboxes
-        cbGroup.getItems().setAll(catGroup);
+        cbGroup.getItems().setAll(lista.getCatGroup());
         cbGroup.setEditable(true);
-        cbBrand.getItems().setAll(catBrand);
+        cbBrand.getItems().setAll(lista.getCatBrand());
         cbBrand.setEditable(true);
-        cbStyle.getItems().setAll(catStyle);
+        cbStyle.getItems().setAll(lista.getCatStyle());
         cbStyle.setEditable(true);
-        cbSmallSize.getItems().setAll(catNumAdul);
-        cbLargeSize.getItems().setAll(catNumAdul);
+        cbSmallSize.getItems().setAll(lista.getCatNumAdul());
+        cbLargeSize.getItems().setAll(lista.getCatNumAdul());
         //seta os tamanhos da marca '91' como invisiveis (padrao)
         showKids(set);
     }

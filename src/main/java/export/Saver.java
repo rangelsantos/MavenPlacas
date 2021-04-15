@@ -1,4 +1,4 @@
-package com.mycompany.mavenplacas;
+package export;
 
 import java.io.File;
 import java.io.FileOutputStream;

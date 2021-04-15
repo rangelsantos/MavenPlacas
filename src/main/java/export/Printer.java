@@ -1,4 +1,4 @@
-package com.mycompany.mavenplacas;
+package export;
 
 import com.spire.doc.Document;
 import java.awt.print.PageFormat;
