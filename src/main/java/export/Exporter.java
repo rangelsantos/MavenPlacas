@@ -140,7 +140,7 @@ public class Exporter extends PrimaryController {
             }
             
             //caso 'set = true' imprime o modelo e os tamanhos da marca '91' selecionados no documento
-            if (set) {
+            if (!set) {
                 for (int loop = 0; loop < numKidsModel.length; loop++) {
                     if (numKidsModel[loop] == kidsmall) {
                         this.smallkids = loop;

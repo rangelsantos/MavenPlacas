@@ -1,5 +1,6 @@
 package main;
 
+import common.Icones;
 import common.Listas;
 import export.Exporter;
 import java.awt.Toolkit;
@@ -28,7 +29,7 @@ public class PrimaryController implements Initializable {
     //booleano que controla a opção de impressão ou salvar
     private boolean print;
     //booleano que vai indicar a opção por uso dos tamanhos adcionais
-    private boolean set = false;
+    private boolean set = true;
     //instancia o objeto com os arrays de tamanhos, tambem são usados na classe exporter
     public Listas lista = new Listas();
 
@@ -100,7 +101,7 @@ public class PrimaryController implements Initializable {
                 cbKidsSmallSize.getSelectionModel().selectFirst();
                 cbKidsLargeSize.getItems().setAll(lista.getCatNumKids());
                 cbKidsLargeSize.getSelectionModel().selectLast();
-                set = true;
+                set = false;
                 showKids(set);
                 break;
             }
@@ -110,21 +111,21 @@ public class PrimaryController implements Initializable {
             case "94": {
                 cbSmallSize.getItems().setAll(lista.getCatNumBaby());
                 cbLargeSize.getItems().setAll(lista.getCatNumBaby());
-                set = false;
+                set = true;
                 showKids(set);
                 break;
             }
             case "95": {
                 cbSmallSize.getItems().setAll(lista.getCatNumKids());
                 cbLargeSize.getItems().setAll(lista.getCatNumKids());
-                set = false;
+                set = true;
                 showKids(set);
                 break;
             }
             case "96": {
                 cbSmallSize.getItems().setAll(lista.getCatNumYoung());
                 cbLargeSize.getItems().setAll(lista.getCatNumYoung());
-                set = false;
+                set = true;
                 showKids(set);
                 break;
             }
@@ -135,7 +136,7 @@ public class PrimaryController implements Initializable {
                 que torna os campos adicionais invisiveis*/
                 if ("22".equals(cbBrand.getValue()) || "97".equals(cbBrand.getValue()) || "89".equals(cbBrand.getValue())) {
                     cbGroupListener();
-                    set = false;
+                    set = true;
                     showKids(set);
                 }
             }
@@ -221,8 +222,8 @@ public class PrimaryController implements Initializable {
     /*controla se os comboboxes de tamanhos infantis, que valem apenas para a marca '91'
     visiveis ou não, baseado no booleano 'set'*/
     public void showKids(boolean set) {
-        cbKidsSmallSize.setVisible(set);
-        cbKidsLargeSize.setVisible(set);
+        cbKidsSmallSize.setDisable(set);
+        cbKidsLargeSize.setDisable(set);
     }
     
     //mostra um dialogo de atencao caso o usuario selecione salvar ou imprimir com algum campo sem valor
@@ -252,13 +253,11 @@ public class PrimaryController implements Initializable {
         errorMensage.showAndWait();
     }
     
-    //carrega o icone do programa mostrado na interface
-    public void loadIcon(){
-        Image icon = new Image(getClass().getResourceAsStream("icon.png"));
-        ImageView image = new ImageView(icon);
-        image.setFitHeight(20);
-        image.setPreserveRatio(true);
-        iconImage.setGraphic(image);
+    //carrega os icones usados na interface
+    public void loadIcon() {
+        btnSave.setGraphic(new Icones("save_white.png", 40).getIcon());
+        btnPrint.setGraphic(new Icones("print_white.png", 40).getIcon());
+        iconImage.setGraphic(new Icones("icon.png", 20).getIcon());
     }
     
     /*valida se todos os campos padrao tem valores, se o booleano 'set' for true, valida os campos de tamanhos exclusivos da marca '91'
@@ -280,7 +279,7 @@ public class PrimaryController implements Initializable {
         } else if (cbLargeSize.getValue() == null) {
             emptyErrorMensage();
             //caso 'set' seja true entra na validacao para o construtor com parametros adcionais
-        } else if (set) {
+        } else if (!set) {
             /*valida os campos de tamanhos exclusivos da marca '91'
             e instancia um novo 'Exporter' passando os parametros adcionais 'cbKidsSmallSize', 'cbKidsSmallSize', 'set' para o construtor
             porque não 'OR'? porque nao funcionou, and i don't know why...*/
