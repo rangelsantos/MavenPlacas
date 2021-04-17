@@ -17,7 +17,7 @@ import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTPageMar;
 public class Exporter extends PrimaryController {
 
     public String group, style, brand, model, kidsmall, kidlarge, small, large, numModel[], numKidsModel[];
-    public boolean print, set;
+    public boolean print, set = true;
     private int smallinfo, largeinfo, smallkids, largekids;
     
     //construtor que recebe os valores na opção padrão

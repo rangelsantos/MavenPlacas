@@ -1,0 +1,71 @@
+/**
+ * JavaFX App, created by Rangel Santos
+ */
+
+/*emptyDialog style*/
+.emptyDialog{
+    -fx-background-color: #61a2da;
+}
+.emptyDialog > *.button-bar > *.container{
+    -fx-background-color: #61a2da;
+}
+.emptyDialog > *.label.content{
+    -fx-font-size: 18px;
+    -fx-text-fill: white;
+    -fx-alignment: CENTER;
+}
+.emptyDialog:header *.header-panel{
+    -fx-background-color: #61a2da;
+}
+.emptyDialog:header *.header-panel *.label{
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-alignment: CENTER;
+}
+.emptyDialog .button{
+    -fx-font-weight: bold;
+    -fx-background-color: #333333;
+    -fx-background-radius: 0;
+    -fx-text-fill: white;
+    -fx-border-color: #333333;
+    -fx-border-radius: 0;
+    -fx-border-width: 2;
+}
+.emptyDialog .button:hover{
+    -fx-border-color: #858585;
+}
+
+/*sizeDialog style*/
+.sizeDialog{
+    -fx-background-color: #A63232;
+}
+.sizeDialog > *.button-bar > *.container{
+    -fx-background-color: #A63232;
+}
+.sizeDialog > *.label.content{
+    -fx-font-size: 18px;
+    -fx-text-fill: white;
+    -fx-alignment: CENTER;
+}
+.sizeDialog:header *.header-panel{
+    -fx-background-color: #A63232;
+}
+.sizeDialog:header *.header-panel *.label{
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-alignment: CENTER;
+}
+.sizeDialog .button{
+    -fx-font-weight: bold;
+    -fx-background-color: #333333;
+    -fx-background-radius: 0;
+    -fx-text-fill: white;
+    -fx-border-color: #333333;
+    -fx-border-radius: 0;
+    -fx-border-width: 2;
+}
+.sizeDialog .button:hover{
+    -fx-border-color: #858585;
+}
