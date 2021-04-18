@@ -147,59 +147,19 @@ public class PrimaryController implements Initializable {
         if (cbBrand.getValue() == null) {
             cbBrand.getSelectionModel().selectFirst();
         }
-        /*caso a marca selecionada seja infantil 'break'!, os tamanhos não seram alterados
-        porque não 'OR'? porque nao funcionou, and i don't know why...*/
-        switch (cbBrand.getValue()) {
-            case "94": {
-                break;
+        //caso a marca selecionada seja infantil, os tamanhos não seram alterados
+        if (cbBrand.getValue() != "94" || cbBrand.getValue() != "95" || cbBrand.getValue() != "96"){
+            /*chama a funcao setNumAdul, que seta os tamanhos de 34 a 58 e PP a GG nos comboxes de tamanhos pricipais
+            caso entre no 'else', seta os tamanhos de malha nos comboxes de tamanhos pricipais*/
+            if (cbGroup.getValue() == "5001" || cbGroup.getValue() == "5002" || cbGroup.getValue() == "6001" || cbGroup.getValue() == "6002" || cbGroup.getValue() == "6003" || cbGroup.getValue() == "6004" || cbGroup.getValue() == "6022"){
+                setNumAdul();
+            } else {
+                cbSmallSize.getItems().setAll(lista.getCatNumMalha());
+                cbLargeSize.getItems().setAll(lista.getCatNumMalha());
             }
-            case "95": {
-                break;
-            }
-            case "96": {
-                break;
-            }
-            default: {
-                /*chama a funcao setNumAdul, que seta os tamanhos de 34 a 58 e P a GG nos comboxes de tamanhos pricipais
-                caso entre no 'default', seta os tamanhos de malha nos comboxes de tamanhos pricipais
-                porque não 'OR'? porque nao funcionou, and i don't know why...*/
-                switch (cbGroup.getValue()) {
-                    case "5001": {
-                        setNumAdul();
-                        break;
-                    }
-                    case "5002": {
-                        setNumAdul();
-                        break;
-                    }
-                    case "6001": {
-                        setNumAdul();
-                        break;
-                    }
-                    case "6002": {
-                        setNumAdul();
-                        break;
-                    }
-                    case "6003": {
-                        setNumAdul();
-                        break;
-                    }
-                    case "6004": {
-                        setNumAdul();
-                        break;
-                    }
-                    case "6022": {
-                        setNumAdul();
-                        break;
-                    }
-                    default: {
-                        cbSmallSize.getItems().setAll(lista.getCatNumMalha());
-                        cbLargeSize.getItems().setAll(lista.getCatNumMalha());
-                    }
-                }
-            }
-            setDefault();
         }
+        //setando os tamanhos default
+        setDefault();
     }
 
     //seta os tamanhos de 34 a 58 e P a GG nos comboxes de tamanhos pricipais

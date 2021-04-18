@@ -21,7 +21,7 @@
       <ComboBox fx:id="cbKidsLargeSize" layoutX="244.0" layoutY="88.0" prefWidth="100.0" promptText="Maior" />
       <Button id="close" fx:id="closeWindow" layoutX="390.0" mnemonicParsing="false" onAction="#buttonClose" stylesheets="@style.css" text="X" />
       <Button fx:id="minimizeWindow" layoutX="365.0" mnemonicParsing="false" onAction="#buttonMinimize" text="_" />
-      <Label layoutX="100.0" layoutY="7.0" text="Placas (TESTE v0.9-b.4 FAT) - Rangel" textFill="WHITE" />
+      <Label layoutX="100.0" layoutY="7.0" text="Placas (TESTE v0.9-b.5 FAT) - Rangel" textFill="WHITE" />
       <Label fx:id="iconImage" layoutX="4.0" layoutY="5.0" />
     </children>
 </AnchorPane>

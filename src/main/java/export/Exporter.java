@@ -46,41 +46,12 @@ public class Exporter extends PrimaryController {
     }
     
     /*funcao que seta o array com tamanhos usados no
-    preechimento do documento baseado no valor variavel 'group'
-    mas e o 'OR'? nao funcionou...*/
+    preechimento do documento baseado no valor variavel 'group'*/
     public void groupFilter() {
-        switch (group) {
-            case "5001": {
-                numModel = lista.getCatNumAdul();
-                break;
-            }
-            case "5002": {
-                numModel = lista.getCatNumAdul();
-                break;
-            }
-            case "6001": {
-                numModel = lista.getCatNumAdul();
-                break;
-            }
-            case "6002": {
-                numModel = lista.getCatNumAdul();
-                break;
-            }
-            case "6003": {
-                numModel = lista.getCatNumAdul();
-                break;
-            }
-            case "6004": {
-                numModel = lista.getCatNumAdul();
-                break;
-            }
-            case "6022": {
-                numModel = lista.getCatNumAdul();
-                break;
-            }
-            default: {
-                numModel = lista.getCatNumMalha();
-            }
+        if(group == "5001" || group == "5002" || group == "6001" || group == "6002" || group == "6003" || group == "6004" || group == "6022"){
+            numModel = lista.getCatNumAdul();
+        } else {
+            numModel = lista.getCatNumMalha();
         }
     }
     
