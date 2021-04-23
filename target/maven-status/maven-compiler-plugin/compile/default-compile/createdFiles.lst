@@ -3,9 +3,9 @@ export\Printer.class
 main\App$1.class
 common\Listas.class
 main\PrimaryController.class
-common\Erros.class
 main\App$2.class
 export\Saver.class
 main\App.class
+common\Dialogos.class
 export\Exporter.class
 common\Icones.class

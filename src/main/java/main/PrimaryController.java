@@ -1,6 +1,6 @@
 package main;
 
-import common.Erros;
+import common.Dialogos;
 import common.Icones;
 import common.Listas;
 import common.VerificaCampos;
@@ -44,6 +44,9 @@ public class PrimaryController implements Initializable {
 
     @FXML
     private Button btnPrint;
+    
+    @FXML
+    private Button btnHelp;
 
     @FXML
     private TextField txtModel;
@@ -184,21 +187,28 @@ public class PrimaryController implements Initializable {
 
     //mostra um dialogo de atencao caso o usuario selecione salvar ou imprimir com algum campo sem valor
     public void emptyErrorMensage() {
-        Erros erro = new Erros(1, "Existem Campos Vazios!", "Por favor, preencha todos os campos", "emptyDialog");
-        erro.errorMensage();
+        Dialogos erro = new Dialogos(1, "Existem Campos Vazios!", "Por favor, preencha todos os campos", "emptyDialog");
+        erro.dialogMensage();
     }
 
     /*mostra um dialogo de erro caso o usuario selecione salvar ou imprimir 
     com opçoes reversas de tamanhos selecionadas nos respectivos campos*/
     public void sizeErrorMensage() {
-        Erros erro = new Erros(2, "Tamanhos Invalidos!", "O tamanho menor selecionado é maior que o tamanho maior selecionado", "sizeDialog");
-        erro.errorMensage();
+        Dialogos erro = new Dialogos(2, "Tamanhos Invalidos!", "O tamanho menor selecionado é maior que o tamanho maior selecionado", "sizeDialog");
+        erro.dialogMensage();
+    }
+    
+    @FXML
+    public void aboutMensage (ActionEvent ae) {
+        Dialogos erro = new Dialogos(3 ,"Projeto Placas", "Programa gerador de placas de identificação para cortes de roupa, que seguem o padrão de numeração e tipo das empresas Grupo PL e Lavinorte ", "aboutDialog");
+        erro.dialogMensage();
     }
 
     //carrega os icones usados na interface
     public void loadIcon() {
         btnSave.setGraphic(new Icones("save_white.png", 40).getIcon());
         btnPrint.setGraphic(new Icones("print_white.png", 40).getIcon());
+        btnHelp.setGraphic(new Icones("help_white.png", 20).getIcon());
         iconImage.setGraphic(new Icones("icon.png", 20).getIcon());
     }
 

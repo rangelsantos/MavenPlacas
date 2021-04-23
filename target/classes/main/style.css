@@ -15,3 +15,15 @@
     -fx-background-color: #c51927;
     -fx-border-color: #c51927;
 }
+
+#btnHelp{
+    -fx-background-radius: 100;
+    -fx-border-radius: 100;
+    -fx-background-position: center;
+    -fx-padding: 0px;
+}
+
+#btnHelp:hover{
+    -fx-background-color: #61a2da;
+    -fx-border-color: #61a2da;
+}

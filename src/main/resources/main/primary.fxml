@@ -9,19 +9,72 @@
 
 <AnchorPane prefHeight="247.0" prefWidth="413.0" styleClass="backgroundMain" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.PrimaryController">
     <children>
-      <Button fx:id="btnSave" alignment="CENTER_RIGHT" layoutX="129.0" layoutY="173.0" onAction="#getSave" prefHeight="60.0" prefWidth="60.0" style="-fx-font-size: 20px; -fx-font-weight: bold;" textAlignment="CENTER" />
-      <ComboBox fx:id="cbGroup" layoutX="17.0" layoutY="42.0" onAction="#cbGroupListener" prefHeight="25.0" prefWidth="100.0" promptText="Grupo" />
-      <ComboBox fx:id="cbBrand" layoutX="192.0" layoutY="42.0" onAction="#cbBrandListener" prefHeight="25.0" prefWidth="100.0" promptText="Marca" />
-      <ComboBox fx:id="cbSmallSize" layoutX="69.0" layoutY="134.0" prefWidth="100.0" promptText="Menor" />
-      <ComboBox fx:id="cbLargeSize" layoutX="244.0" layoutY="134.0" prefWidth="100.0" promptText="Maior" />
-      <TextField fx:id="txtModel" layoutX="297.0" layoutY="42.0" prefHeight="26.0" prefWidth="100.0" promptText="Modelo" />
-      <ComboBox fx:id="cbStyle" layoutX="122.0" layoutY="42.0" prefHeight="25.0" prefWidth="64.0" promptText="-" />
-      <Button fx:id="btnPrint" alignment="CENTER_RIGHT" layoutX="225.0" layoutY="173.0" mnemonicParsing="false" onAction="#getPrint" prefHeight="60.0" prefWidth="60.0" style="-fx-font-size: 20px; -fx-font-weight: bold;" textAlignment="CENTER" />
-      <ComboBox fx:id="cbKidsSmallSize" layoutX="69.0" layoutY="88.0" prefWidth="100.0" promptText="Menor" />
-      <ComboBox fx:id="cbKidsLargeSize" layoutX="244.0" layoutY="88.0" prefWidth="100.0" promptText="Maior" />
-      <Button id="close" fx:id="closeWindow" layoutX="390.0" mnemonicParsing="false" onAction="#buttonClose" stylesheets="@style.css" text="X" />
-      <Button fx:id="minimizeWindow" layoutX="365.0" mnemonicParsing="false" onAction="#buttonMinimize" text="_" />
-      <Label layoutX="100.0" layoutY="7.0" text="Placas (TESTE v0.9-b.5 FAT) - Rangel" textFill="WHITE" />
+      <Button fx:id="btnSave" alignment="CENTER_RIGHT" layoutX="129.0" layoutY="173.0" onAction="#getSave" prefHeight="60.0" prefWidth="60.0" textAlignment="CENTER">
+          <tooltip>
+              <Tooltip text="Salvar" />
+          </tooltip>
+      </Button>
+      <Button fx:id="btnPrint" alignment="CENTER_RIGHT" layoutX="225.0" layoutY="173.0" mnemonicParsing="false" onAction="#getPrint" prefHeight="60.0" prefWidth="60.0" textAlignment="CENTER"> 
+          <tooltip>
+              <Tooltip text="Imprimir" />
+          </tooltip>
+      </Button>
+      <ComboBox fx:id="cbGroup" layoutX="17.0" layoutY="42.0" onAction="#cbGroupListener" prefHeight="25.0" prefWidth="100.0" promptText="Grupo">
+          <tooltip>
+              <Tooltip text="Grupo/Tipo" />
+          </tooltip>
+      </ComboBox>
+      <ComboBox fx:id="cbBrand" layoutX="192.0" layoutY="42.0" onAction="#cbBrandListener" prefHeight="25.0" prefWidth="100.0" promptText="Marca">
+          <tooltip>
+              <Tooltip text="Marca" />
+          </tooltip>
+      </ComboBox>
+      <ComboBox fx:id="cbSmallSize" layoutX="69.0" layoutY="134.0" prefWidth="100.0" promptText="Menor">
+          <tooltip>
+              <Tooltip text="Tamanho menor" />
+          </tooltip>
+      </ComboBox>
+      <ComboBox fx:id="cbLargeSize" layoutX="244.0" layoutY="134.0" prefWidth="100.0" promptText="Maior">
+          <tooltip>
+              <Tooltip text="Tamanho maior" />
+          </tooltip>
+      </ComboBox>
+      <ComboBox fx:id="cbStyle" layoutX="122.0" layoutY="42.0" prefHeight="25.0" prefWidth="64.0" promptText="-">
+          <tooltip>
+              <Tooltip text="Sinal separador" />
+          </tooltip>
+      </ComboBox>
+      <ComboBox fx:id="cbKidsSmallSize" layoutX="69.0" layoutY="88.0" prefWidth="100.0" promptText="Menor">
+          <tooltip>
+              <Tooltip text="Tamanho menor da Puramania Mini Me" />
+          </tooltip>
+      </ComboBox>
+      <ComboBox fx:id="cbKidsLargeSize" layoutX="244.0" layoutY="88.0" prefWidth="100.0" promptText="Maior">
+          <tooltip>
+              <Tooltip text="Tamanho maior da Puramania Mini Me" />
+          </tooltip>
+      </ComboBox>
+      <TextField fx:id="txtModel" layoutX="297.0" layoutY="42.0" prefHeight="26.0" prefWidth="100.0" promptText="Modelo">
+          <tooltip>
+              <Tooltip text="Modelo/Produto/Referência" />
+          </tooltip>
+      </TextField>
+      <Button id="close" fx:id="closeWindow" layoutX="390.0" mnemonicParsing="false" onAction="#buttonClose" stylesheets="@style.css" text="X">
+          <tooltip>
+              <Tooltip text="Fechar" />
+          </tooltip>
+      </Button>
+      <Button fx:id="minimizeWindow" layoutX="365.0" mnemonicParsing="false" onAction="#buttonMinimize" text="_">
+          <tooltip>
+              <Tooltip text="Minimizar" />
+          </tooltip>
+      </Button>
+      <Button id="btnHelp" fx:id="btnHelp" layoutX="380.0" layoutY="209.0" mnemonicParsing="false" onAction="#aboutMensage" >
+          <tooltip>
+              <Tooltip text="Sobre" />
+          </tooltip>
+      </Button>
+      <Label layoutX="100.0" layoutY="7.0" text="Placas (TESTE v0.9-b.6 FAT) - Rangel" textFill="WHITE" />
       <Label fx:id="iconImage" layoutX="4.0" layoutY="5.0" />
     </children>
 </AnchorPane>
