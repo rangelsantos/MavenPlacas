@@ -74,7 +74,7 @@
               <Tooltip text="Sobre" />
           </tooltip>
       </Button>
-      <Label layoutX="100.0" layoutY="7.0" text="Placas (TESTE v0.9-b.6 FAT) - Rangel" textFill="WHITE" />
+      <Label layoutX="100.0" layoutY="7.0" text="Placas (TESTE v0.9-b.7 FAT) - Rangel" textFill="WHITE" />
       <Label fx:id="iconImage" layoutX="4.0" layoutY="5.0" />
     </children>
 </AnchorPane>
