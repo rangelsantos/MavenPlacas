@@ -69,12 +69,12 @@
               <Tooltip text="Minimizar" />
           </tooltip>
       </Button>
-      <Button id="btnHelp" fx:id="btnHelp" layoutX="380.0" layoutY="209.0" mnemonicParsing="false" onAction="#aboutMensage" >
+      <Button id="btnHelp" fx:id="btnHelp" layoutX="380.0" layoutY="209.0" mnemonicParsing="false" onAction="#aboutMensage">
           <tooltip>
               <Tooltip text="Sobre" />
           </tooltip>
       </Button>
-      <Label layoutX="100.0" layoutY="7.0" text="Placas (TESTE v0.9-b.7 FAT) - Rangel" textFill="WHITE" />
+      <Label layoutX="151.0" layoutY="7.0" text="Projeto Placas (BETA)" textFill="WHITE" />
       <Label fx:id="iconImage" layoutX="4.0" layoutY="5.0" />
     </children>
 </AnchorPane>
