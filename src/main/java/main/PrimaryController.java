@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -26,8 +27,12 @@ public class PrimaryController implements Initializable {
     private boolean print;
     //booleano que vai indicar a opção por uso dos tamanhos adcionais
     private boolean set = true;
+    private boolean options = false;
     //instancia o objeto com os arrays de tamanhos, tambem são usados na classe exporter
     public Listas lista = new Listas();
+    private boolean enabledXG = false;
+    private boolean enabled3436 = false;
+    private boolean enabled5052 = false;
 
     //Controles da interface FXML
     @FXML
@@ -44,7 +49,7 @@ public class PrimaryController implements Initializable {
 
     @FXML
     private Button btnPrint;
-    
+
     @FXML
     private Button btnHelp;
 
@@ -71,6 +76,51 @@ public class PrimaryController implements Initializable {
 
     @FXML
     private ComboBox<String> cbKidsLargeSize;
+
+    @FXML
+    private CheckBox useXG = new CheckBox();
+
+    @FXML
+    private CheckBox use34 = new CheckBox();
+
+    @FXML
+    private CheckBox use50 = new CheckBox();
+
+    @FXML
+    private void setXG(ActionEvent ae) throws IOException {
+        if (!enabledXG) {
+            lista.setXG();
+            enabledXG = true;
+        } else {
+            lista.setEG();
+            enabledXG = false;
+        }
+        cbBrandListener();
+    }
+
+    @FXML
+    private void set34(ActionEvent ae) throws IOException {
+        if (!enabled3436) {
+            lista.set3436();
+            enabled3436 = true;
+        } else {
+            lista.set36();
+            enabled3436 = false;
+        }
+        cbBrandListener();
+    }
+
+    @FXML
+    private void set50(ActionEvent ae) throws IOException {
+        if (!enabled5052) {
+            lista.set5052();
+            enabled5052 = true;
+        } else {
+            lista.set50();
+            enabled5052 = false;
+        }
+        cbBrandListener();
+    }
 
     //botao de salvar, seta o print como false e chama o printer
     @FXML
@@ -101,7 +151,9 @@ public class PrimaryController implements Initializable {
                 cbKidsLargeSize.getItems().setAll(lista.getCatNumKids());
                 cbKidsLargeSize.getSelectionModel().selectLast();
                 set = false;
-                showKids(set);
+                showKids();
+                options = false;
+                showOptions();
                 break;
             }
             /*caso a seleção seja o 94, 95 ou 96 ele carrega os comboboxes com os devidos arrays e
@@ -111,21 +163,27 @@ public class PrimaryController implements Initializable {
                 cbSmallSize.getItems().setAll(lista.getCatNumBaby());
                 cbLargeSize.getItems().setAll(lista.getCatNumBaby());
                 set = true;
-                showKids(set);
+                showKids();
+                options = true;
+                showOptions();
                 break;
             }
             case "95": {
                 cbSmallSize.getItems().setAll(lista.getCatNumKids());
                 cbLargeSize.getItems().setAll(lista.getCatNumKids());
                 set = true;
-                showKids(set);
+                showKids();
+                options = true;
+                showOptions();
                 break;
             }
             case "96": {
                 cbSmallSize.getItems().setAll(lista.getCatNumYoung());
                 cbLargeSize.getItems().setAll(lista.getCatNumYoung());
                 set = true;
-                showKids(set);
+                showKids();
+                options = true;
+                showOptions();
                 break;
             }
             default: {
@@ -136,7 +194,9 @@ public class PrimaryController implements Initializable {
                 if ("22".equals(cbBrand.getValue()) || "97".equals(cbBrand.getValue()) || "89".equals(cbBrand.getValue())) {
                     cbGroupListener();
                     set = true;
-                    showKids(set);
+                    showKids();
+                    options = false;
+                    showOptions();
                 }
             }
         }
@@ -151,10 +211,10 @@ public class PrimaryController implements Initializable {
             cbBrand.getSelectionModel().selectFirst();
         }
         //caso a marca selecionada seja infantil, os tamanhos não seram alterados
-        if (cbBrand.getValue() != "94" || cbBrand.getValue() != "95" || cbBrand.getValue() != "96"){
+        if (cbBrand.getValue() != "94" || cbBrand.getValue() != "95" || cbBrand.getValue() != "96") {
             /*chama a funcao setNumAdul, que seta os tamanhos de 34 a 58 e PP a GG nos comboxes de tamanhos pricipais
             caso entre no 'else', seta os tamanhos de malha nos comboxes de tamanhos pricipais*/
-            if (cbGroup.getValue() == "5001" || cbGroup.getValue() == "5002" || cbGroup.getValue() == "6001" || cbGroup.getValue() == "6002" || cbGroup.getValue() == "6003" || cbGroup.getValue() == "6004" || cbGroup.getValue() == "6022"){
+            if (cbGroup.getValue() == "5001" || cbGroup.getValue() == "5002" || cbGroup.getValue() == "6001" || cbGroup.getValue() == "6002" || cbGroup.getValue() == "6003" || cbGroup.getValue() == "6004" || cbGroup.getValue() == "6022") {
                 setNumAdul();
             } else {
                 cbSmallSize.getItems().setAll(lista.getCatNumMalha());
@@ -165,7 +225,7 @@ public class PrimaryController implements Initializable {
         setDefault();
     }
 
-    //seta os tamanhos de 34 a 58 e P a GG nos comboxes de tamanhos pricipais
+    //seta os tamanhos de 34 a 58 e PP a XXG nos comboxes de tamanhos pricipais
     public void setNumAdul() {
         cbSmallSize.getItems().setAll(lista.getCatNumAdul());
         cbLargeSize.getItems().setAll(lista.getCatNumAdul());
@@ -180,9 +240,15 @@ public class PrimaryController implements Initializable {
 
     /*controla se os comboboxes de tamanhos infantis, que valem apenas para a marca '91'
     visiveis ou não, baseado no booleano 'set'*/
-    public void showKids(boolean set) {
+    public void showKids() {
         cbKidsSmallSize.setDisable(set);
         cbKidsLargeSize.setDisable(set);
+    }
+
+    public void showOptions() {
+        useXG.setDisable(options);
+        use34.setDisable(options);
+        use50.setDisable(options);
     }
 
     //mostra um dialogo de atencao caso o usuario selecione salvar ou imprimir com algum campo sem valor
@@ -197,10 +263,10 @@ public class PrimaryController implements Initializable {
         Dialogos erro = new Dialogos(2, "Tamanhos Invalidos!", "O tamanho menor selecionado é maior que o tamanho maior selecionado", "sizeDialog");
         erro.dialogMensage();
     }
-    
+
     @FXML
-    public void aboutMensage (ActionEvent ae) {
-        Dialogos erro = new Dialogos(3 ,"Projeto Placas", "Versão: 0.9-beta7\n\nPrograma gerador de placas de identificação para cortes de roupa, que seguem o padrão de numeração e tipo das empresas Grupo PL e Lavinorte.\n\nBibliotecas Java:\n- pdfbox-2.0.23\n- fontbox-2.0.23\n- jmetro-8.6.14\n\nCriado por Rangel Santos", "aboutDialog");
+    public void aboutMensage(ActionEvent ae) {
+        Dialogos erro = new Dialogos(3, "Projeto Placas", "Versão: 0.9-beta8\n\nPrograma gerador de placas de identificação para cortes de roupa, que seguem o padrão de numeração e tipo das empresas Grupo PL e Lavinorte.\n\nBibliotecas Java:\n- pdfbox-2.0.23\n- fontbox-2.0.23\n- jmetro-8.6.14\n\nCriado por Rangel Santos", "aboutDialog");
         erro.dialogMensage();
     }
 
@@ -250,13 +316,13 @@ public class PrimaryController implements Initializable {
                 } else if (new VerificaCampos(cbSmallSize, cbLargeSize).validaTamanho()) {
                     sizeErrorMensage();
                 } else {
-                    Exporter document = new Exporter(cbGroup.getValue(), cbStyle.getValue(), cbBrand.getValue(), txtModel.getText(), cbKidsSmallSize.getValue(), cbKidsLargeSize.getValue(), cbSmallSize.getValue(), cbLargeSize.getValue(), print, set);
+                    Exporter document = new Exporter(lista, cbGroup.getValue(), cbStyle.getValue(), cbBrand.getValue(), txtModel.getText(), cbKidsSmallSize.getValue(), cbKidsLargeSize.getValue(), cbSmallSize.getValue(), cbLargeSize.getValue(), print, set);
                     document.fileFormater();
                 }
             } else if (new VerificaCampos(cbSmallSize, cbLargeSize).validaTamanho()) {
                 sizeErrorMensage();
             } else {
-                Exporter document = new Exporter(cbGroup.getValue(), cbStyle.getValue(), cbBrand.getValue(), txtModel.getText(), cbSmallSize.getValue(), cbLargeSize.getValue(), print);
+                Exporter document = new Exporter(lista, cbGroup.getValue(), cbStyle.getValue(), cbBrand.getValue(), txtModel.getText(), cbSmallSize.getValue(), cbLargeSize.getValue(), print);
                 document.fileFormater();
             }
         }
@@ -290,6 +356,6 @@ public class PrimaryController implements Initializable {
         cbSmallSize.getItems().setAll(lista.getCatNumAdul());
         cbLargeSize.getItems().setAll(lista.getCatNumAdul());
         //seta os tamanhos da marca '91' como desabilitados (padrao)
-        showKids(set);
+        showKids();
     }
 }

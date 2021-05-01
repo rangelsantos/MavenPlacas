@@ -50,7 +50,7 @@ public class App extends Application {
         //Torna o tamanho da janela fixo
         stage.setResizable(false);
         //Seta o titulo
-        stage.setTitle("Placas (TESTE v0.9-b.7 FAT) - Rangel");
+        stage.setTitle("Placas (TESTE v0.9-b.8 FAT) - Rangel");
         //Carrega o icone
         stage.getIcons().add(new Image(getClass().getResourceAsStream("icon.png")));
         //Seta a cena e mostra a janela

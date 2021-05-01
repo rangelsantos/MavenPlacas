@@ -78,4 +78,30 @@ public class Listas {
     public void setCatNumYoung(String[] catNumYoung) {
         this.catNumYoung = catNumYoung;
     }
+    
+    public void setEG(){
+        this.catNumMalha[5] = "EG";
+        this.catNumAdul[18] = "EG";
+    }
+    
+    public void setXG(){
+        this.catNumMalha[5] = "XG";
+        this.catNumAdul[18] = "XG";
+    }
+    
+    public void set3436(){
+        this.catNumAdul[1] = "34-36";
+    }
+    
+    public void set36(){
+        this.catNumAdul[1] = "36";
+    }
+    
+    public void set5052(){
+        this.catNumAdul[8] = "50-52";
+    }
+    
+    public void set50(){
+        this.catNumAdul[8] = "50";
+    }
 }

@@ -74,6 +74,21 @@
               <Tooltip text="Sobre" />
           </tooltip>
       </Button>
+      <CheckBox fx:id="useXG" layoutX="40.0" layoutY="172.0" mnemonicParsing="false" onAction="#setXG" text="XG">
+          <tooltip>
+              <Tooltip text="Usar XG ao invés de EG" />
+          </tooltip>
+      </CheckBox>
+      <CheckBox fx:id="use34" layoutX="40.0" layoutY="194.0" mnemonicParsing="false" onAction="#set34" text="34-36">
+         <tooltip>
+            <Tooltip text="Usar 34-36 ao invés de 36" />
+         </tooltip>
+      </CheckBox>
+      <CheckBox fx:id="use50" layoutX="40.0" layoutY="217.0" mnemonicParsing="false" onAction="#set50" text="50-52">
+         <tooltip>
+            <Tooltip text="Usar 50-52 ao invés de 50" />
+         </tooltip>
+      </CheckBox>
       <Label layoutX="151.0" layoutY="7.0" text="Projeto Placas (BETA)" textFill="WHITE" />
       <Label fx:id="iconImage" layoutX="4.0" layoutY="5.0" />
     </children>

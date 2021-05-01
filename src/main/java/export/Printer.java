@@ -37,7 +37,7 @@ public class Printer {
             }
         } catch (PrinterException e) {
             e.printStackTrace();
-            System.out.println("falha ao imprimir");
+            System.out.println("falha do printer ao imprimir");
         }
     }
 }

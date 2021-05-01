@@ -1,5 +1,6 @@
 package export;
 
+import common.Listas;
 import main.PrimaryController;
 
 import java.io.IOException;
@@ -13,7 +14,7 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
 /**
  * JavaFX App, created by Rangel Santos
  */
-public class Exporter extends PrimaryController {
+public class Exporter {
 
     public String group, style, brand, model, kidsmall, kidlarge, small, large, numModel[], numKidsModel[];
     public boolean print, set = true;
@@ -21,9 +22,11 @@ public class Exporter extends PrimaryController {
     private int line = 0;
     private PDPage page;
     private PDDocument document = new PDDocument();
+    private Listas localLista = new Listas();
 
     //construtor que recebe os valores na opção padrão
-    public Exporter(String group, String style, String brand, String model, String small, String large, boolean print) throws IOException {
+    public Exporter(Listas lista, String group, String style, String brand, String model, String small, String large, boolean print) throws IOException {
+        this.localLista = lista;
         this.group = group;
         this.style = style;
         this.brand = brand;
@@ -34,7 +37,8 @@ public class Exporter extends PrimaryController {
     }
 
     //construtor que recebe os valores adcionais na opção para marca '91'
-    public Exporter(String group, String style, String brand, String model, String kidsmall, String kidlarge, String small, String large, boolean print, boolean set) throws IOException {
+    public Exporter(Listas lista, String group, String style, String brand, String model, String kidsmall, String kidlarge, String small, String large, boolean print, boolean set) throws IOException {
+        this.localLista = lista;
         this.group = group;
         this.style = style;
         this.brand = brand;
@@ -51,9 +55,9 @@ public class Exporter extends PrimaryController {
     preechimento do documento baseado no valor variavel 'group'*/
     public void groupFilter() {
         if (group == "5001" || group == "5002" || group == "6001" || group == "6002" || group == "6003" || group == "6004" || group == "6022") {
-            numModel = lista.getCatNumAdul();
+            numModel = localLista.getCatNumAdul();
         } else {
-            numModel = lista.getCatNumMalha();
+            numModel = localLista.getCatNumMalha();
         }
     }
 
@@ -131,20 +135,20 @@ public class Exporter extends PrimaryController {
             caso nao seja infantil chama a funcao 'groupFilter' que seta os tamanhos adultos*/
             switch (brand) {
                 case "91": {
-                    numKidsModel = lista.getCatNumKids();
+                    numKidsModel = localLista.getCatNumKids();
                     groupFilter();
                     break;
                 }
                 case "94": {
-                    numModel = lista.getCatNumBaby();
+                    numModel = localLista.getCatNumBaby();
                     break;
                 }
                 case "95": {
-                    numModel = lista.getCatNumKids();
+                    numModel = localLista.getCatNumKids();
                     break;
                 }
                 case "96": {
-                    numModel = lista.getCatNumYoung();
+                    numModel = localLista.getCatNumYoung();
                     break;
                 }
                 default: {
