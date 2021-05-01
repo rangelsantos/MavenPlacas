@@ -245,6 +245,7 @@ public class PrimaryController implements Initializable {
         cbKidsLargeSize.setDisable(set);
     }
 
+    //caso a marca selecionada seja "94", "95" ou "96", as opções são desabilidadas
     public void showOptions() {
         useXG.setDisable(options);
         use34.setDisable(options);
