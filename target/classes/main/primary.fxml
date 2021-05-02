@@ -74,17 +74,17 @@
               <Tooltip text="Sobre" />
           </tooltip>
       </Button>
-      <CheckBox fx:id="useXG" layoutX="40.0" layoutY="172.0" mnemonicParsing="false" onAction="#setXG" text="XG">
+      <CheckBox fx:id="useXG" layoutX="41.0" layoutY="172.0" mnemonicParsing="false" onAction="#setXG" text="XG">
           <tooltip>
               <Tooltip text="Usar XG ao invés de EG" />
           </tooltip>
       </CheckBox>
-      <CheckBox fx:id="use34" layoutX="40.0" layoutY="194.0" mnemonicParsing="false" onAction="#set34" text="34-36">
+      <CheckBox fx:id="use34" layoutX="41.0" layoutY="195.0" mnemonicParsing="false" onAction="#set34" text="34-36">
          <tooltip>
             <Tooltip text="Usar 34-36 ao invés de 36" />
          </tooltip>
       </CheckBox>
-      <CheckBox fx:id="use50" layoutX="40.0" layoutY="217.0" mnemonicParsing="false" onAction="#set50" text="50-52">
+      <CheckBox fx:id="use50" layoutX="41.0" layoutY="218.0" mnemonicParsing="false" onAction="#set50" text="50-52">
          <tooltip>
             <Tooltip text="Usar 50-52 ao invés de 50" />
          </tooltip>

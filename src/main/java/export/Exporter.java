@@ -151,6 +151,10 @@ public class Exporter {
                     numModel = localLista.getCatNumYoung();
                     break;
                 }
+                case "177": {
+                    numModel = localLista.getCatNumBoti();
+                    break;
+                }
                 default: {
                     groupFilter();
                 }

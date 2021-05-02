@@ -7,13 +7,14 @@ package common;
 public class Listas {
 
     private String catGroup[] = {"5001", "5002", "5003", "5005", "5006", "5007", "5008", "5009", "5010", "5011", "5014", "5015", "5016", "5017", "5018", "5016", "5017", "5018", "5019", "5030", "5049", "5050", "5059", "6001", "6002", "6003", "6004", "6005", "6006", "6007", "6008", "6009", "6010", "6011", "6012", "6013", "6014", "6015", "6016", "6017", "6018", "6019", "6020", "6022", "6024", "6025", "6030", "6034", "6040", "6042", "6045", "7007"};
-    private String catBrand[] = {"22", "89", "91", "94", "95", "96", "97"};
+    private String catBrand[] = {"1" ,"22", "89", "91", "94", "95", "96", "97", "99", "177", "229"};
     private String catStyle[] = {"-", "+", "*", ".", " ", "_"};
     private String catNumAdul[] = {"34", "36", "38", "40", "42", "44", "46", "48", "50", "52", "54", "56", "58", "PP", "P", "M", "G", "GG", "EG", "EGG", "XGG", "XXG"};
     private String catNumMalha[] = {"PP", "P", "M", "G", "GG", "EG", "EGG", "XGG", "XXG"};
     private String catNumBaby[] = {"P", "M", "G", "GG", "EG"};
     private String catNumKids[] = {"1", "2", "3", "4", "6", "8", "10", "12", "14", "16", "18"};
     private String catNumYoung[] = {"12", "14", "16", "18"};
+    private String catNumBoti[] = {"34", "36", "38", "40", "42", "44", "46", "48", "50", "52", "54", "56", "58", "PP", "P", "M", "G", "GG", "EG", "EGG", "EG1", "EG2", "EG3", "EG4"};
 
     public String[] getCatGroup() {
         return catGroup;
@@ -77,6 +78,14 @@ public class Listas {
 
     public void setCatNumYoung(String[] catNumYoung) {
         this.catNumYoung = catNumYoung;
+    }
+
+    public String[] getCatNumBoti() {
+        return catNumBoti;
+    }
+
+    public void setCatNumBoti(String[] catNumBoti) {
+        this.catNumBoti = catNumBoti;
     }
     
     public void setEG(){

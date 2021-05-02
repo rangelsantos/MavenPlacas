@@ -186,12 +186,20 @@ public class PrimaryController implements Initializable {
                 showOptions();
                 break;
             }
+            case "177": {
+                cbSmallSize.getItems().setAll(lista.getCatNumBoti());
+                cbLargeSize.getItems().setAll(lista.getCatNumBoti());
+                set = true;
+                showKids();
+                options = true;
+                showOptions();
+            }
             default: {
                 /*caso a seleção seja uma marca de tamanhos adultos, ele chama a 
                 função 'cbGroupListener' que seta dos tamanhos adultos, em seguida seta o 
                 booleano set como false e passa como parametro para a funcao 'showKids', 
                 que torna os campos adicionais invisiveis*/
-                if ("22".equals(cbBrand.getValue()) || "97".equals(cbBrand.getValue()) || "89".equals(cbBrand.getValue())) {
+                if ("1".equals(cbBrand.getValue()) || "22".equals(cbBrand.getValue()) || "97".equals(cbBrand.getValue()) || "89".equals(cbBrand.getValue()) || "99".equals(cbBrand.getValue()) || "229".equals(cbBrand.getValue())) {
                     cbGroupListener();
                     set = true;
                     showKids();
@@ -267,7 +275,7 @@ public class PrimaryController implements Initializable {
 
     @FXML
     public void aboutMensage(ActionEvent ae) {
-        Dialogos erro = new Dialogos(3, "Projeto Placas", "Versão: 0.9-beta8\n\nPrograma gerador de placas de identificação para cortes de roupa, que seguem o padrão de numeração e tipo das empresas Grupo PL e Lavinorte.\n\nBibliotecas Java:\n- pdfbox-2.0.23\n- fontbox-2.0.23\n- jmetro-8.6.14\n\nCriado por Rangel Santos", "aboutDialog");
+        Dialogos erro = new Dialogos(3, "Projeto Placas", "Versão: 0.9-beta9\n\nPrograma gerador de placas de identificação para cortes de roupa, que seguem o padrão de numeração e tipo das empresas Grupo PL e Lavinorte.\n\nBibliotecas Java:\n- pdfbox-2.0.23\n- fontbox-2.0.23\n- jmetro-8.6.14\n\nCriado por Rangel Santos", "aboutDialog");
         erro.dialogMensage();
     }
 
