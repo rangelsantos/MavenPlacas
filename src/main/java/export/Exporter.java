@@ -1,7 +1,6 @@
 package export;
 
 import common.Listas;
-import main.PrimaryController;
 
 import java.io.IOException;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -167,7 +166,7 @@ public class Exporter {
 
             //imprime o modelos e os tamanhos selecionados no documento
             writer(numModel, small, large);
-
+            
             //caso o botao selecionado seja salvar, instanciamos um novo 'Saver'
             if (!print) {
                 Saver save = new Saver(document);

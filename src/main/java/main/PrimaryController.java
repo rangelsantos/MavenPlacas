@@ -253,7 +253,7 @@ public class PrimaryController implements Initializable {
         cbKidsLargeSize.setDisable(set);
     }
 
-    //caso a marca selecionada seja "94", "95" ou "96", as opções são desabilidadas
+    //caso a marca selecionada seja "94", "95", "96" ou "177", as opções são desabilidadas
     public void showOptions() {
         useXG.setDisable(options);
         use34.setDisable(options);
@@ -275,7 +275,7 @@ public class PrimaryController implements Initializable {
 
     @FXML
     public void aboutMensage(ActionEvent ae) {
-        Dialogos erro = new Dialogos(3, "Projeto Placas", "Versão: 0.9-beta9\n\nPrograma gerador de placas de identificação para cortes de roupa, que seguem o padrão de numeração e tipo das empresas Grupo PL e Lavinorte.\n\nBibliotecas Java:\n- pdfbox-2.0.23\n- fontbox-2.0.23\n- jmetro-8.6.14\n\nCriado por Rangel Santos", "aboutDialog");
+        Dialogos erro = new Dialogos(3, "Projeto Placas", "Versão: 0.9-beta9\n\nPrograma gerador de placas de identificação para cortes de roupa, que seguem o padrão de numeração e tipo das empresas do Grupo PL.\n\nBibliotecas Java:\n- pdfbox-2.0.23\n- fontbox-2.0.23\n- jmetro-8.6.14\n\nCriado por Rangel Santos", "aboutDialog");
         erro.dialogMensage();
     }
 
