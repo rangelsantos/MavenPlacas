@@ -72,30 +72,40 @@ public class Exporter {
         }
 
         for (int loop = smallinfo; loop < largeinfo; loop++) {
+            incrementLine();
             code = group + style + brand + style + model;
             addCenterText(code);
             size = String.valueOf(localNumModel[loop]);
             addCenterText(size);
-            incrementLine();
         }
     }
 
     public void incrementLine() {
         line += 2;
-        if (line > 9 && line <= 10) {
-            addNewPage();
-        } else if (line > 19 && line <= 20) {
-            addNewPage();
-        } else if (line > 29 && line <= 30) {
-            addNewPage();
-        } else if (line > 39 && line <= 40) {
-            addNewPage();
-        } else if (line > 49 && line <= 50) {
-            addNewPage();
-        } else if (line > 59 && line <= 60) {
-            addNewPage();
-        } else if (line > 69 && line <= 70) {
-            addNewPage();
+        switch (line) {
+            case 12:
+                addNewPage();
+                break;
+            case 22:
+                addNewPage();
+                break;
+            case 32:
+                addNewPage();
+                break;
+            case 42:
+                addNewPage();
+                break;
+            case 52:
+                addNewPage();
+                break;
+            case 62:
+                addNewPage();
+                break;
+            case 72:
+                addNewPage();
+                break;
+            default:
+                break;
         }
     }
 
