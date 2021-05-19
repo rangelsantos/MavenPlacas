@@ -1,4 +1,4 @@
-# MavenPlacas (Projeto Placas)
+# projeto-placas (Projeto Placas)
 
 Versão de teste v0.9-beta.9 (04/05/2021)
 
