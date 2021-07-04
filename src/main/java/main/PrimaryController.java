@@ -16,6 +16,8 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 /**
@@ -30,6 +32,8 @@ public class PrimaryController implements Initializable {
     private boolean options = false;
     //instancia o objeto com os arrays de tamanhos, tambem são usados na classe exporter
     public Listas lista = new Listas();
+    private boolean enabledPPP = false;
+    private boolean enabledGGG = false;
     private boolean enabledXG = false;
     private boolean enabled3436 = false;
     private boolean enabled5052 = false;
@@ -78,6 +82,12 @@ public class PrimaryController implements Initializable {
     private ComboBox<String> cbKidsLargeSize;
 
     @FXML
+    private CheckBox usePPP = new CheckBox();
+
+    @FXML
+    private CheckBox useGGG = new CheckBox();
+
+    @FXML
     private CheckBox useXG = new CheckBox();
 
     @FXML
@@ -85,6 +95,30 @@ public class PrimaryController implements Initializable {
 
     @FXML
     private CheckBox use50 = new CheckBox();
+
+    @FXML
+    private void setPPP(ActionEvent ae) throws IOException {
+        if (!enabledPPP) {
+            lista.setPPP();
+            enabledPPP = true;
+        } else {
+            lista.setP();
+            enabledPPP = false;
+        }
+        cbBrandListener();
+    }
+
+    @FXML
+    private void setGGG(ActionEvent ae) throws IOException {
+        if (!enabledGGG) {
+            lista.setGGG();
+            enabledGGG = true;
+        } else {
+            lista.setG();
+            enabledGGG = false;
+        }
+        cbBrandListener();
+    }
 
     @FXML
     private void setXG(ActionEvent ae) throws IOException {
@@ -233,6 +267,16 @@ public class PrimaryController implements Initializable {
         setDefault();
     }
 
+    @FXML
+    public void cbSmallSizeListener() {
+        lista.setLastSmall(cbSmallSize.getSelectionModel().getSelectedIndex());
+    }
+
+    @FXML
+    public void cbLargeSizeListener() {
+        lista.setLastLarge(cbLargeSize.getSelectionModel().getSelectedIndex());
+    }
+
     //seta os tamanhos de 34 a 58 e PP a XXG nos comboxes de tamanhos pricipais
     public void setNumAdul() {
         cbSmallSize.getItems().setAll(lista.getCatNumAdul());
@@ -242,8 +286,17 @@ public class PrimaryController implements Initializable {
     /*seta o cbSmallSize (combobox pricipal do tamanho menor) na primeira opção
     seta o cbLargeSize (combobox pricipal do tamanho menor) na ultima opção*/
     public void setDefault() {
-        cbSmallSize.getSelectionModel().selectFirst();
-        cbLargeSize.getSelectionModel().selectLast();
+        if (lista.getLastSmall() == -1) {
+            cbSmallSize.getSelectionModel().selectFirst();
+        } else {
+            cbSmallSize.getSelectionModel().select(lista.getLastSmall());
+        }
+
+        if (lista.getLastLarge() == -1 ) {
+            cbLargeSize.getSelectionModel().selectLast();
+        } else {
+            cbLargeSize.getSelectionModel().select(lista.getLastLarge());
+        }
     }
 
     /*controla se os comboboxes de tamanhos infantis, que valem apenas para a marca '91'
@@ -255,6 +308,8 @@ public class PrimaryController implements Initializable {
 
     //caso a marca selecionada seja "94", "95", "96" ou "177", as opções são desabilidadas
     public void showOptions() {
+        usePPP.setDisable(options);
+        useGGG.setDisable(options);
         useXG.setDisable(options);
         use34.setDisable(options);
         use50.setDisable(options);
@@ -285,6 +340,8 @@ public class PrimaryController implements Initializable {
         btnPrint.setGraphic(new Icones("print_white.png", 40).getIcon());
         btnHelp.setGraphic(new Icones("help_white.png", 20).getIcon());
         iconImage.setGraphic(new Icones("icon.png", 20).getIcon());
+        closeWindow.setGraphic((new Icones("close_white.png", 20).getIcon()));
+        minimizeWindow.setGraphic((new Icones("remove_white.png", 20).getIcon()));
     }
 
     /*valida se todos os campos padrao tem valores, se o booleano 'set' for true, valida os campos de tamanhos exclusivos da marca '91'
@@ -349,6 +406,15 @@ public class PrimaryController implements Initializable {
     public void buttonMinimize(ActionEvent event) {
         Stage stage = (Stage) minimizeWindow.getScene().getWindow();
         stage.setIconified(true);
+    }
+
+    @FXML
+    private void keyListener(KeyEvent event) throws IOException {
+        if (event.getCode() == KeyCode.F3) {
+            getSave(null);
+        } else if (event.getCode() == KeyCode.F6) {
+            getPrint(null);
+        }
     }
 
     @Override

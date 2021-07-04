@@ -1,5 +1,6 @@
 common\VerificaCampos.class
 export\Printer.class
+common\Preview$1.class
 main\App$1.class
 common\Listas.class
 main\PrimaryController.class
@@ -7,5 +8,6 @@ main\App$2.class
 export\Saver.class
 main\App.class
 common\Dialogos.class
+common\Preview.class
 export\Exporter.class
 common\Icones.class

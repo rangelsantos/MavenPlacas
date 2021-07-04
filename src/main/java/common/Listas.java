@@ -15,6 +15,8 @@ public class Listas {
     private String catNumKids[] = {"1", "2", "3", "4", "6", "8", "10", "12", "14", "16", "18"};
     private String catNumYoung[] = {"12", "14", "16", "18"};
     private String catNumBoti[] = {"34", "36", "38", "40", "42", "44", "46", "48", "50", "52", "54", "56", "58", "PP", "P", "M", "G", "GG", "EG", "EGG", "EG1", "EG2", "EG3", "EG4"};
+    private int lastSmall = -1;
+    private int lastLarge = -1;
 
     public String[] getCatGroup() {
         return catGroup;
@@ -87,7 +89,23 @@ public class Listas {
     public void setCatNumBoti(String[] catNumBoti) {
         this.catNumBoti = catNumBoti;
     }
-    
+
+    public int getLastSmall() {
+        return lastSmall;
+    }
+
+    public void setLastSmall(int lastSmall) {
+        this.lastSmall = lastSmall;
+    }
+
+    public int getLastLarge() {
+        return lastLarge;
+    }
+
+    public void setLastLarge(int lastLarge) {
+        this.lastLarge = lastLarge;
+    }
+
     public void setEG(){
         this.catNumMalha[5] = "EG";
         this.catNumAdul[18] = "EG";
@@ -112,5 +130,25 @@ public class Listas {
     
     public void set50(){
         this.catNumAdul[8] = "50";
+    }
+    
+    public void setPPP(){
+        this.catNumMalha[1] = "PP-P";
+        this.catNumAdul[14] = "PP-P";
+    }
+    
+    public void setP(){
+        this.catNumMalha[1] = "P";
+        this.catNumAdul[14] = "P";
+    }
+    
+    public void setGGG(){
+        this.catNumMalha[3] = "G-GG";
+        this.catNumAdul[16] = "G-GG";
+    }
+    
+    public void setG(){
+        this.catNumMalha[3] = "G";
+        this.catNumAdul[16] = "G";
     }
 }

@@ -7,89 +7,99 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="247.0" prefWidth="413.0" styleClass="backgroundMain" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.PrimaryController">
+<AnchorPane prefHeight="247.0" prefWidth="505.0" styleClass="backgroundMain" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.PrimaryController">
     <children>
-      <Button fx:id="btnSave" alignment="CENTER_RIGHT" layoutX="129.0" layoutY="173.0" onAction="#getSave" prefHeight="60.0" prefWidth="60.0" textAlignment="CENTER">
+      <Button fx:id="btnSave" alignment="CENTER_RIGHT" layoutX="228.0" layoutY="173.0" onAction="#getSave" onKeyPressed="#keyListener" prefHeight="60.0" prefWidth="60.0" textAlignment="CENTER">
           <tooltip>
               <Tooltip text="Salvar" />
           </tooltip>
       </Button>
-      <Button fx:id="btnPrint" alignment="CENTER_RIGHT" layoutX="225.0" layoutY="173.0" mnemonicParsing="false" onAction="#getPrint" prefHeight="60.0" prefWidth="60.0" textAlignment="CENTER"> 
+      <Button fx:id="btnPrint" alignment="CENTER_RIGHT" layoutX="324.0" layoutY="173.0" mnemonicParsing="false" onAction="#getPrint" onKeyPressed="#keyListener" prefHeight="60.0" prefWidth="60.0" textAlignment="CENTER"> 
           <tooltip>
               <Tooltip text="Imprimir" />
           </tooltip>
       </Button>
-      <ComboBox fx:id="cbGroup" layoutX="17.0" layoutY="42.0" onAction="#cbGroupListener" prefHeight="25.0" prefWidth="100.0" promptText="Grupo">
+      <ComboBox fx:id="cbGroup" layoutX="116.0" layoutY="42.0" onAction="#cbGroupListener" prefHeight="25.0" prefWidth="100.0" promptText="Grupo">
           <tooltip>
               <Tooltip text="Grupo/Tipo" />
           </tooltip>
       </ComboBox>
-      <ComboBox fx:id="cbBrand" layoutX="192.0" layoutY="42.0" onAction="#cbBrandListener" prefHeight="25.0" prefWidth="100.0" promptText="Marca">
+      <ComboBox fx:id="cbBrand" layoutX="291.0" layoutY="42.0" onAction="#cbBrandListener" prefHeight="25.0" prefWidth="100.0" promptText="Marca">
           <tooltip>
               <Tooltip text="Marca" />
           </tooltip>
       </ComboBox>
-      <ComboBox fx:id="cbSmallSize" layoutX="69.0" layoutY="134.0" prefWidth="100.0" promptText="Menor">
+      <ComboBox fx:id="cbSmallSize" layoutX="168.0" layoutY="134.0" onAction="#cbSmallSizeListener" prefWidth="100.0" promptText="Menor">
           <tooltip>
               <Tooltip text="Tamanho menor" />
           </tooltip>
       </ComboBox>
-      <ComboBox fx:id="cbLargeSize" layoutX="244.0" layoutY="134.0" prefWidth="100.0" promptText="Maior">
+      <ComboBox fx:id="cbLargeSize" layoutX="343.0" layoutY="134.0" onAction="#cbLargeSizeListener" prefWidth="100.0" promptText="Maior">
           <tooltip>
               <Tooltip text="Tamanho maior" />
           </tooltip>
       </ComboBox>
-      <ComboBox fx:id="cbStyle" layoutX="122.0" layoutY="42.0" prefHeight="25.0" prefWidth="64.0" promptText="-">
+      <ComboBox fx:id="cbStyle" layoutX="221.0" layoutY="42.0" prefHeight="25.0" prefWidth="64.0" promptText="-">
           <tooltip>
               <Tooltip text="Sinal separador" />
           </tooltip>
       </ComboBox>
-      <ComboBox fx:id="cbKidsSmallSize" layoutX="69.0" layoutY="88.0" prefWidth="100.0" promptText="Menor">
+      <ComboBox fx:id="cbKidsSmallSize" layoutX="168.0" layoutY="88.0" prefWidth="100.0" promptText="Menor">
           <tooltip>
               <Tooltip text="Tamanho menor da Puramania Mini Me" />
           </tooltip>
       </ComboBox>
-      <ComboBox fx:id="cbKidsLargeSize" layoutX="244.0" layoutY="88.0" prefWidth="100.0" promptText="Maior">
+      <ComboBox fx:id="cbKidsLargeSize" layoutX="343.0" layoutY="88.0" prefWidth="100.0" promptText="Maior">
           <tooltip>
               <Tooltip text="Tamanho maior da Puramania Mini Me" />
           </tooltip>
       </ComboBox>
-      <TextField fx:id="txtModel" layoutX="297.0" layoutY="42.0" prefHeight="26.0" prefWidth="100.0" promptText="Modelo">
+      <TextField fx:id="txtModel" layoutX="396.0" layoutY="42.0" prefHeight="26.0" prefWidth="100.0" promptText="Modelo">
           <tooltip>
               <Tooltip text="Modelo/Produto/Referência" />
           </tooltip>
       </TextField>
-      <Button id="close" fx:id="closeWindow" layoutX="390.0" mnemonicParsing="false" onAction="#buttonClose" stylesheets="@style.css" text="X">
+      <Button id="close" fx:id="closeWindow" layoutX="489.0" mnemonicParsing="false" onAction="#buttonClose" stylesheets="@style.css">
           <tooltip>
               <Tooltip text="Fechar" />
           </tooltip>
       </Button>
-      <Button fx:id="minimizeWindow" layoutX="365.0" mnemonicParsing="false" onAction="#buttonMinimize" text="_">
+      <Button id="minimize" fx:id="minimizeWindow" layoutX="465.0" mnemonicParsing="false" onAction="#buttonMinimize">
           <tooltip>
               <Tooltip text="Minimizar" />
           </tooltip>
       </Button>
-      <Button id="btnHelp" fx:id="btnHelp" layoutX="380.0" layoutY="209.0" mnemonicParsing="false" onAction="#aboutMensage">
+      <Button id="btnHelp" fx:id="btnHelp" layoutX="479.0" layoutY="209.0" mnemonicParsing="false" onAction="#aboutMensage">
           <tooltip>
               <Tooltip text="Sobre" />
           </tooltip>
       </Button>
-      <CheckBox fx:id="useXG" layoutX="41.0" layoutY="172.0" mnemonicParsing="false" onAction="#setXG" text="XG">
+      <CheckBox fx:id="useXG" layoutX="27.0" layoutY="113.0" mnemonicParsing="false" onAction="#setXG" text="XG">
           <tooltip>
               <Tooltip text="Usar XG ao invés de EG" />
           </tooltip>
       </CheckBox>
-      <CheckBox fx:id="use34" layoutX="41.0" layoutY="195.0" mnemonicParsing="false" onAction="#set34" text="34-36">
+      <CheckBox fx:id="use34" layoutX="27.0" layoutY="136.0" mnemonicParsing="false" onAction="#set34" text="34-36">
          <tooltip>
             <Tooltip text="Usar 34-36 ao invés de 36" />
          </tooltip>
       </CheckBox>
-      <CheckBox fx:id="use50" layoutX="41.0" layoutY="218.0" mnemonicParsing="false" onAction="#set50" text="50-52">
+      <CheckBox fx:id="use50" layoutX="27.0" layoutY="159.0" mnemonicParsing="false" onAction="#set50" text="50-52">
          <tooltip>
             <Tooltip text="Usar 50-52 ao invés de 50" />
          </tooltip>
       </CheckBox>
-      <Label layoutX="151.0" layoutY="7.0" text="Projeto Placas (BETA)" textFill="WHITE" />
+      <CheckBox fx:id="usePPP" layoutX="27.0" layoutY="67.0" mnemonicParsing="false" onAction="#setPPP" text="PP-P">
+          <tooltip>
+            <Tooltip text="Usar PP-P ao invés de P" />
+         </tooltip>
+      </CheckBox>
+      <CheckBox fx:id="useGGG" layoutX="27.0" layoutY="90.0" mnemonicParsing="false" onAction="#setGGG" text="G-GG">
+          <tooltip>
+            <Tooltip text="Usar G-GG ao invés de G" />
+         </tooltip>
+      </CheckBox>
+      <Label layoutX="202.0" layoutY="7.0" text="Projeto Placas (BETA)" textFill="WHITE" />
       <Label fx:id="iconImage" layoutX="4.0" layoutY="5.0" />
     </children>
 </AnchorPane>

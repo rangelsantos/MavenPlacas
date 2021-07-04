@@ -7,10 +7,16 @@
     -fx-background-color: #1f1f1f;
 }
 
-#close{
-    -fx-font-weight: bold;
-    -fx-text-fill: white;
+#minimize{
+    -fx-background-position: center;
+    -fx-padding: 0px;
 }
+
+#close{
+    -fx-background-position: center;
+    -fx-padding: 0px;
+}
+
 #close:hover{
     -fx-background-color: #c51927;
     -fx-border-color: #c51927;
