@@ -44,12 +44,12 @@
               <Tooltip text="Sinal separador" />
           </tooltip>
       </ComboBox>
-      <ComboBox fx:id="cbKidsSmallSize" layoutX="168.0" layoutY="88.0" prefWidth="100.0" promptText="Menor">
+      <ComboBox fx:id="cbKidsSmallSize" layoutX="168.0" layoutY="88.0" onAction="#cbSmallSizeKidsListener" prefWidth="100.0" promptText="Menor">
           <tooltip>
               <Tooltip text="Tamanho menor da Puramania Mini Me" />
           </tooltip>
       </ComboBox>
-      <ComboBox fx:id="cbKidsLargeSize" layoutX="343.0" layoutY="88.0" prefWidth="100.0" promptText="Maior">
+      <ComboBox fx:id="cbKidsLargeSize" layoutX="343.0" layoutY="88.0" onAction="#cbLargeSizeKidsListener" prefWidth="100.0" promptText="Maior">
           <tooltip>
               <Tooltip text="Tamanho maior da Puramania Mini Me" />
           </tooltip>

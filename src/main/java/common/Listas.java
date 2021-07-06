@@ -17,6 +17,8 @@ public class Listas {
     private String catNumBoti[] = {"34", "36", "38", "40", "42", "44", "46", "48", "50", "52", "54", "56", "58", "PP", "P", "M", "G", "GG", "EG", "EGG", "EG1", "EG2", "EG3", "EG4"};
     private int lastSmall = -1;
     private int lastLarge = -1;
+    private int lastSmallKids = -1;
+    private int lastLargeKids = -1;
 
     public String[] getCatGroup() {
         return catGroup;
@@ -106,6 +108,22 @@ public class Listas {
         this.lastLarge = lastLarge;
     }
 
+    public int getLastSmallKids() {
+        return lastSmallKids;
+    }
+
+    public void setLastSmallKids(int lastSmallKids) {
+        this.lastSmallKids = lastSmallKids;
+    }
+
+    public int getLastLargeKids() {
+        return lastLargeKids;
+    }
+
+    public void setLastLargeKids(int lastLargeKids) {
+        this.lastLargeKids = lastLargeKids;
+    }
+    
     public void setEG(){
         this.catNumMalha[5] = "EG";
         this.catNumAdul[18] = "EG";

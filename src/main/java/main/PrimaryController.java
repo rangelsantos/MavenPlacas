@@ -180,10 +180,20 @@ public class PrimaryController implements Initializable {
             que torna os campos adicionais visiveis*/
             case "91": {
                 cbGroupListener();
-                cbKidsSmallSize.getItems().setAll(lista.getCatNumKids());
-                cbKidsSmallSize.getSelectionModel().selectFirst();
-                cbKidsLargeSize.getItems().setAll(lista.getCatNumKids());
-                cbKidsLargeSize.getSelectionModel().selectLast();
+//                cbKidsSmallSize.getItems().setAll(lista.getCatNumKids());
+//                cbKidsLargeSize.getItems().setAll(lista.getCatNumKids());
+                if (lista.getLastSmallKids() == -1) {
+                    cbKidsSmallSize.getItems().setAll(lista.getCatNumKids());
+                    cbKidsSmallSize.getSelectionModel().selectFirst();
+                } else {
+                    cbKidsSmallSize.getSelectionModel().select(lista.getLastSmallKids());
+                }
+                if (lista.getLastLargeKids() == -1) {
+                    cbKidsLargeSize.getItems().setAll(lista.getCatNumKids());
+                    cbKidsLargeSize.getSelectionModel().selectLast();
+                } else {
+                    cbKidsLargeSize.getSelectionModel().select(lista.getLastLargeKids());
+                }
                 set = false;
                 showKids();
                 options = false;
@@ -277,6 +287,16 @@ public class PrimaryController implements Initializable {
         lista.setLastLarge(cbLargeSize.getSelectionModel().getSelectedIndex());
     }
 
+    @FXML
+    public void cbSmallSizeKidsListener() {
+        lista.setLastSmallKids(cbKidsSmallSize.getSelectionModel().getSelectedIndex());
+    }
+
+    @FXML
+    public void cbLargeSizeKidsListener() {
+        lista.setLastLargeKids(cbKidsLargeSize.getSelectionModel().getSelectedIndex());
+    }
+
     //seta os tamanhos de 34 a 58 e PP a XXG nos comboxes de tamanhos pricipais
     public void setNumAdul() {
         cbSmallSize.getItems().setAll(lista.getCatNumAdul());
@@ -292,7 +312,7 @@ public class PrimaryController implements Initializable {
             cbSmallSize.getSelectionModel().select(lista.getLastSmall());
         }
 
-        if (lista.getLastLarge() == -1 ) {
+        if (lista.getLastLarge() == -1) {
             cbLargeSize.getSelectionModel().selectLast();
         } else {
             cbLargeSize.getSelectionModel().select(lista.getLastLarge());
