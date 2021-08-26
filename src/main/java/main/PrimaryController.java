@@ -350,7 +350,7 @@ public class PrimaryController implements Initializable {
 
     @FXML
     public void aboutMensage(ActionEvent ae) {
-        Dialogos erro = new Dialogos(3, "Projeto Placas", "Versão: 0.9-beta9\n\nPrograma gerador de placas de identificação para cortes de roupa, que seguem o padrão de numeração e tipo das empresas do Grupo PL.\n\nBibliotecas Java:\n- pdfbox-2.0.23\n- fontbox-2.0.23\n- jmetro-8.6.14\n\nCriado por Rangel Santos", "aboutDialog");
+        Dialogos erro = new Dialogos(3, "Projeto Placas", "Versão: 0.9-beta10\n\nPrograma gerador de placas de identificação para cortes de roupa, que seguem o padrão de numeração e tipo das empresas do Grupo PL.\n\nBibliotecas Java:\n- pdfbox-2.0.24\n- fontbox-2.0.24\n- jmetro-8.6.14\n\nCriado por Rangel Santos", "aboutDialog");
         erro.dialogMensage();
     }
 
