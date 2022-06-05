@@ -1,14 +1,14 @@
 # projeto-placas (Projeto Placas)
 
-Versão de teste v0.9-beta.9 (04/05/2021)
+Versão de teste 1.0-rc.1 (05/06/2022)
 
 Tela principal
 
-![Screenshot 2021-05-05 191753](https://user-images.githubusercontent.com/75550536/117216954-f336e600-add6-11eb-902b-e1387e67c55d.png)
+![image](https://user-images.githubusercontent.com/75550536/172066926-983abaaf-c35b-4777-a8a3-3d7c9343b1d5.png)
 
 Tela de informações sobre o programa
 
-![Screenshot 2021-05-05 191843](https://user-images.githubusercontent.com/75550536/117216949-f205b900-add6-11eb-82ea-51ee681c45e7.png)
+![image](https://user-images.githubusercontent.com/75550536/172066962-c2337aa2-1436-464d-b992-738962bbbda4.png)
 
 Erro de campo(s) vazios
 
