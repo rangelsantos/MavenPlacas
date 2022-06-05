@@ -99,7 +99,7 @@
             <Tooltip text="Usar G-GG ao invés de G" />
          </tooltip>
       </CheckBox>
-      <Label layoutX="202.0" layoutY="7.0" text="Projeto Placas (BETA)" textFill="WHITE" />
+      <Label layoutX="202.0" layoutY="7.0" text="Projeto Placas (1.0-rc.1)" textFill="WHITE" />
       <Label fx:id="iconImage" layoutX="4.0" layoutY="5.0" />
     </children>
 </AnchorPane>

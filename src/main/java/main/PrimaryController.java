@@ -266,7 +266,7 @@ public class PrimaryController implements Initializable {
         if (cbBrand.getValue() != "94" || cbBrand.getValue() != "95" || cbBrand.getValue() != "96") {
             /*chama a funcao setNumAdul, que seta os tamanhos de 34 a 58 e PP a GG nos comboxes de tamanhos pricipais
             caso entre no 'else', seta os tamanhos de malha nos comboxes de tamanhos pricipais*/
-            if (cbGroup.getValue() == "5001" || cbGroup.getValue() == "5002" || cbGroup.getValue() == "6001" || cbGroup.getValue() == "6002" || cbGroup.getValue() == "6003" || cbGroup.getValue() == "6004" || cbGroup.getValue() == "6022") {
+            if (cbGroup.getValue() == "5001" || cbGroup.getValue() == "5002" || cbGroup.getValue() == "6001" || cbGroup.getValue() == "6002" || cbGroup.getValue() == "6003" || cbGroup.getValue() == "6004" || cbGroup.getValue() == "6022" || cbGroup.getValue() == "6025" || cbGroup.getValue() == "6027") {
                 setNumAdul();
             } else {
                 cbSmallSize.getItems().setAll(lista.getCatNumMalha());
@@ -350,7 +350,7 @@ public class PrimaryController implements Initializable {
 
     @FXML
     public void aboutMensage(ActionEvent ae) {
-        Dialogos erro = new Dialogos(3, "Projeto Placas", "Versão: 0.9-beta10\n\nPrograma gerador de placas de identificação para cortes de roupa, que seguem o padrão de numeração e tipo das empresas do Grupo PL.\n\nBibliotecas Java:\n- pdfbox-2.0.24\n- fontbox-2.0.24\n- jmetro-8.6.14\n\nCriado por Rangel Santos", "aboutDialog");
+        Dialogos erro = new Dialogos(3, "Projeto Placas", "Versão: 1.0-rc.1\n\nPrograma gerador de placas de identificação para cortes de roupa, que seguem o padrão de numeração e tipo das empresas do Grupo PL.\n\nBibliotecas Java:\n- pdfbox-2.0.24\n- fontbox-2.0.24\n- jmetro-8.6.14\n\nCriado por Rangel Santos", "aboutDialog");
         erro.dialogMensage();
     }
 

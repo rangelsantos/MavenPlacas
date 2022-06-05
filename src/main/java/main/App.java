@@ -50,7 +50,7 @@ public class App extends Application {
         //Torna o tamanho da janela fixo
         stage.setResizable(false);
         //Seta o titulo
-        stage.setTitle("Projeto Placas (BETA v0.9-b.10)");
+        stage.setTitle("Projeto Placas (1.0-rc.1)");
         //Carrega o icone
         stage.getIcons().add(new Image(getClass().getResourceAsStream("icon.png")));
         //Seta a cena e mostra a janela
